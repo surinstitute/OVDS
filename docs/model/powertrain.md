@@ -50,8 +50,10 @@ The following technical entities are defined as reusable schemas:
 - [Electric motor](../schemas/electric-motor.md)
 - [Battery pack](../schemas/battery-pack.md)
 
+Reusable engine and electric-motor entities can store component-level power values. The concrete vehicle record should still carry any published combined or system output in `performance.power`.
+
 Fuel-cell stacks are intentionally not a standalone schema yet. The vehicle schema keeps a reserved `fuelCellStackId` reference so that entity can be added later without reworking the powertrain model.
 
 ## Current Scope
 
-In v0.1, the vehicle schema stores role-based powertrain usage references inside the vehicle record. The reusable entities themselves live in their own schemas under `spec/v0.1/`.
+In v0.1.1, the vehicle schema stores role-based powertrain usage references inside the vehicle record. The reusable entities themselves live in their own schemas under `spec/v0.1.1/`.

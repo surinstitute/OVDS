@@ -1,4 +1,4 @@
-# OVDS Standard v0.1
+# OVDS Standard v0.1.x
 
 ## Status
 
@@ -123,11 +123,13 @@ Assembly origin is modeled separately from `lineage` because manufacturing locat
 
 The `specs` block contains canonical SI measurements and weights for the published vehicle configuration.
 
-The `specs` block may also contain published physical capacities such as passenger capacity, payload capacity, towing capacity, cargo capacity, and ground clearance.
+The `specs` block may also contain published physical capacities and dimensional measurements such as door count, passenger capacity, payload capacity, towing capacity, cargo capacity, ground clearance, front or rear brake type, and front or rear track width.
 
 `footprint`, when present, is treated as a published physical measurement rather than an internally derived value.
 
-The `performance` block contains published results such as efficiency, range, emissions, acceleration, top speed, and torque.
+The `performance` block contains published results such as efficiency, range, emissions, acceleration, top speed, torque, and power.
+
+Reusable component schemas may also store their own published component power values, for example engine power or electric-motor power, while `performance.power` on the vehicle record remains the place for the published vehicle-level or system-level power result.
 
 Charging is modeled as part of `configuration` rather than as part of the battery pack because published charging behavior depends on the full vehicle charging system, not only on the pack itself.
 
@@ -170,8 +172,11 @@ Efficiency, range, and emissions are modeled as separate published results rathe
 - `performance.efficiency` contains cycle-based efficiency results.
 - `performance.range` contains cycle-based range results.
 - `performance.emissions` contains cycle-based emissions results.
+- `performance.power` contains published combustion, electric-motor, or system power results.
 
 These values may vary by test cycle, scope, and market publication method.
+
+OVDS keeps `epa` as a valid aggregate cycle label for published US-market results, but also allows source-cycle values such as `ftp` and `hfet` when manufacturers or regulators publish the underlying EPA test-cycle results separately.
 
 Cost-of-ownership data is modeled separately from performance results.
 
@@ -193,6 +198,8 @@ This taxonomy is intentionally simple in v0.1 and may evolve in future versions 
 ## Reusable Technical Entities
 
 The engine, electric motor, battery pack, and transmission schemas are reusable across multiple vehicles.
+
+The engine and electric motor schemas may carry component-level power values that remain stable across multiple fitments, while the vehicle schema carries the published system result for the concrete configuration.
 
 The group, make, and platform schemas define reusable identity and architecture entities above the vehicle level.
 

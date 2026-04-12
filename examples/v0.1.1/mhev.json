@@ -1,16 +1,16 @@
 {
-  "id": "OVDS-V-AETHRA-ORBIT-2026-GLIDE-2-0-HEV-ECVT",
+  "id": "OVDS-V-AETHRA-SOLIS-2026-SPARK-1-5-MHEV-6MT",
   "lineage": {
     "makeId": "OVDS-MK-AETHRA",
-    "modelId": "OVDS-MD-AETHRA-ORBIT",
-    "platformId": "OVDS-PF-AERIS-C",
-    "generationId": "OVDS-GN-AETHRA-ORBIT-1",
+    "modelId": "OVDS-MD-AETHRA-SOLIS",
+    "platformId": "OVDS-PF-NOVA-C",
+    "generationId": "OVDS-GN-AETHRA-SOLIS-1",
     "modelYear": 2026,
-    "variantId": "OVDS-VR-AETHRA-ORBIT-2026-GLIDE-2-0-HEV"
+    "variantId": "OVDS-VR-AETHRA-SOLIS-2026-SPARK-1-5-MHEV"
   },
   "configuration": {
     "powertrain": {
-      "architecture": "power_split_hybrid",
+      "architecture": "mild_hybrid",
       "energySources": [
         {
           "source": "gasoline",
@@ -21,78 +21,91 @@
         {
           "type": "fuel_tank",
           "fuelCapacity": {
-            "value": 43,
+            "value": 48,
             "unit": "l"
           },
           "isPrimary": true
         },
         {
           "type": "battery_pack",
-          "batteryPackId": "OVDS-BP-ORBIT-NIMH-14",
+          "batteryPackId": "OVDS-BP-NOVA-048-MHEV",
           "isPrimary": false
         }
       ],
       "energyConverters": [
         {
           "type": "combustion_engine",
-          "engineId": "OVDS-EG-ORBIT-20A",
+          "engineId": "OVDS-EG-NOVA-15T",
           "role": "mixed",
           "isPrimary": true
         }
       ],
       "tractionMotors": [
         {
-          "electricMotorId": "OVDS-EM-ORBIT-FRONT-80",
+          "electricMotorId": "OVDS-EM-NOVA-BSG-12",
           "isPrimary": true
         }
       ],
       "driveType": "fwd"
     },
-    "transmissionId": "OVDS-TR-ECVT-POWER-SPLIT",
-    "bodyStyle": "crossover"
+    "transmissionId": "OVDS-TR-6MT-240",
+    "bodyStyle": "hatchback"
   },
   "origin": {
-    "assemblyCountry": "CZ",
-    "assemblyRegion": "Moravia-Silesia",
-    "assemblyPlant": "Orbit Assembly Complex"
+    "assemblyCountry": "ES",
+    "assemblyRegion": "Navarra",
+    "assemblyPlant": "Nova Mobility Plant"
   },
   "specs": {
     "length": {
-      "value": 4510,
+      "value": 4320,
       "unit": "mm"
     },
     "width": {
-      "value": 1835,
+      "value": 1795,
       "unit": "mm"
     },
     "height": {
-      "value": 1600,
+      "value": 1460,
       "unit": "mm"
     },
     "wheelbase": {
-      "value": 2700,
+      "value": 2640,
+      "unit": "mm"
+    },
+    "frontTrackWidth": {
+      "value": 1548,
+      "unit": "mm"
+    },
+    "rearTrackWidth": {
+      "value": 1536,
       "unit": "mm"
     },
     "groundClearance": {
-      "value": 180,
+      "value": 142,
       "unit": "mm"
     },
     "curbWeight": {
-      "value": 1545,
+      "value": 1325,
       "unit": "kg"
     },
     "maxLoad": {
-      "value": 495,
+      "value": 505,
       "unit": "kg"
     },
+    "doorCount": 5,
     "passengerCapacity": 5,
     "payloadCapacity": {
-      "value": 495,
+      "value": 505,
       "unit": "kg"
     },
     "cargoCapacity": {
-      "value": 470,
+      "value": 380,
       "unit": "l"
+    },
+    "brakes": {
+      "front": "ventilated_disc",
+      "rear": "disc"
     }
   },
   "performance": {
@@ -101,7 +114,7 @@
         "cycle": "wltp",
         "scope": "combined",
         "metric": "fuel_consumption",
-        "value": 4.4,
+        "value": 5.4,
         "unit": "l_per_100km",
         "isPrimary": true
       }
@@ -111,7 +124,7 @@
         "cycle": "wltp",
         "scope": "combined",
         "metric": "total_range",
-        "value": 1020,
+        "value": 890,
         "unit": "km",
         "isPrimary": true
       }
@@ -121,7 +134,7 @@
         "cycle": "wltp",
         "scope": "combined",
         "metric": "co2_tailpipe",
-        "value": 100,
+        "value": 122,
         "unit": "g_per_km",
         "isPrimary": true
       }
@@ -129,14 +142,14 @@
     "acceleration": [
       {
         "metric": "0_100_kmh",
-        "value": 8,
+        "value": 8.9,
         "unit": "s",
         "isPrimary": true
       }
     ],
     "topSpeed": [
       {
-        "value": 182,
+        "value": 208,
         "unit": "km_h",
         "isPrimary": true
       }
@@ -144,8 +157,26 @@
     "torque": [
       {
         "metric": "system_torque",
-        "value": 320,
+        "value": 270,
         "unit": "nm",
+        "isPrimary": true
+      }
+    ],
+    "power": [
+      {
+        "metric": "combustion_engine_power",
+        "value": 96,
+        "unit": "kw"
+      },
+      {
+        "metric": "electric_motor_power",
+        "value": 12,
+        "unit": "kw"
+      },
+      {
+        "metric": "system_power",
+        "value": 100,
+        "unit": "kw",
         "isPrimary": true
       }
     ]
@@ -155,14 +186,14 @@
       {
         "region": "EU",
         "standard": "Euro 6e",
-        "classification": "full_hybrid",
+        "classification": "light_duty_passenger_car",
         "isPrimary": true
       }
     ]
   },
   "attributes": {
-    "displayName": "Aethra Orbit Glide 2.0 HEV eCVT",
+    "displayName": "Aethra Solis Spark 1.5 MHEV 6MT",
     "exampleType": "fictional",
-    "sourceNote": "Illustrative power-split hybrid reference example for OVDS v0.1"
+    "sourceNote": "Illustrative mild-hybrid reference example for OVDS v0.1"
   }
 }

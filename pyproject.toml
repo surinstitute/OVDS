@@ -1,6 +1,12 @@
 [project]
 name = "ovds"
-version = "0.1.0"
+version = "0.1.1"
+authors = [
+    { name="Rodrigo Cortez", email="<EMAIL_ADDRESS>" },
+]
+description = "Open Vehicle Data Standard (OVDS) is a public specification for modeling and sharing vehicle data in a consistent, extensible, and machine-readable format. It defines a common schema for representing vehicle configurations, performance, compliance, safety features, and ownership costs, enabling easier data exchange and comparison across different sources and applications."
+readme = "README.md"
+license = "CC0-1.0"
 requires-python = ">=3.14.4"
 dependencies = [
     "jsonschema>=4.26.0",

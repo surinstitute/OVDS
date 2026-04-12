@@ -9,11 +9,11 @@ This repository contains the specification only. It does not contain backend cod
 ## Documentation
 
 - Overview: [docs/index.md](docs/index.md)
-- Normative spec: [spec/v0.1/readme.md](spec/v0.1/readme.md)
+- Normative spec: [spec/v0.1.1/readme.md](spec/v0.1.1/readme.md)
 
 ## Data Model
 
-OVDS v0.1 is organized around a concrete vehicle record with separate reusable technical entities.
+OVDS v0.1.1 is organized around a concrete vehicle record with separate reusable technical entities.
 
 - Group: reusable automotive group definition above makes
 - Make: reusable brand or marque definition
@@ -37,17 +37,17 @@ This keeps commercial lineage separate from technical composition while reducing
 
 ## Core Vehicle Model
 
-The current v0.1 schemas are defined in:
+The current v0.1.1 schemas are defined in:
 
-- `spec/v0.1/vehicle.schema.json`
-- `spec/v0.1/group.schema.json`
-- `spec/v0.1/make.schema.json`
-- `spec/v0.1/platform.schema.json`
-- `spec/v0.1/safety.schema.json`
-- `spec/v0.1/engine.schema.json`
-- `spec/v0.1/electric-motor.schema.json`
-- `spec/v0.1/battery-pack.schema.json`
-- `spec/v0.1/transmission.schema.json`
+- `spec/v0.1.1/vehicle.schema.json`
+- `spec/v0.1.1/group.schema.json`
+- `spec/v0.1.1/make.schema.json`
+- `spec/v0.1.1/platform.schema.json`
+- `spec/v0.1.1/safety.schema.json`
+- `spec/v0.1.1/engine.schema.json`
+- `spec/v0.1.1/electric-motor.schema.json`
+- `spec/v0.1.1/battery-pack.schema.json`
+- `spec/v0.1.1/transmission.schema.json`
 
 The vehicle schema is structured around these top-level blocks:
 
@@ -83,13 +83,15 @@ This allows OVDS to represent vehicles such as series hybrids and range-extended
 
 Fuel capacity is modeled inside energy storage, while longer-horizon ownership estimates are modeled separately in `costOfOwnership`.
 
-Published efficiency, range, emissions, acceleration, top speed, and torque results are modeled separately from compliance data so test-cycle values and regulatory classifications can coexist without being conflated.
+Published efficiency, range, emissions, acceleration, top speed, torque, and system power results are modeled separately from compliance data so test-cycle values and regulatory classifications can coexist without being conflated.
+
+Reusable engine and electric-motor schemas can also store component-level power values without duplicating vehicle-level combined output.
 
 Safety features are modeled separately from both compliance and commercial packaging so they can be compared across brands using a common taxonomy.
 
 ## Versioning
 
-OVDS versions are published by directory within the repository, for example `spec/v0.1/`.
+OVDS versions are published by directory within the repository, for example `spec/v0.1.1/`.
 
 This repository does not use long-lived branches as the primary versioning mechanism for the standard.
 
@@ -97,7 +99,7 @@ The intended release strategy is:
 
 - versioned specification directories in `spec/`
 - matching explanatory documentation under `docs/versions/`
-- Git tags for official published releases such as `v0.1.0`
+- Git tags for official published releases such as `v0.1.0` and `v0.1.1`
 
 This keeps multiple specification versions visible in one repository while making published releases easy to reference and later expose in generated documentation sites.
 
@@ -131,14 +133,14 @@ You can also validate a concrete JSON document against a specific schema $id:
 
 ```bash
 uv run python scripts/validate_schemas.py \
-  --schema-id https://ovds.xyz/spec/v0.1/vehicle.schema.json \
-  --instance examples/v0.1/ev.json
+  --schema-id https://ovds.xyz/spec/v0.1.1/vehicle.schema.json \
+  --instance examples/v0.1.1/ev.json
 ```
 
 The validation script loads local schemas from `spec/` into an in-memory registry so
 canonical `$id` references resolve without network access.
 
-Reference examples under `examples/v0.1/` currently cover a battery-electric vehicle plus mild-hybrid, full-hybrid, plug-in hybrid, and series-hybrid configurations.
+Reference examples under `examples/v0.1.1/` currently cover a battery-electric vehicle plus mild-hybrid, full-hybrid, plug-in hybrid, and series-hybrid configurations.
 
 ## Compliance
 

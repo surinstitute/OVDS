@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ovds.xyz/spec/v0.1/engine.schema.json",
+  "$id": "https://ovds.xyz/spec/v0.1.1/engine.schema.json",
   "title": "Open Vehicle Data Standard - Engine",
   "type": "object",
   "additionalProperties": false,
@@ -20,6 +20,11 @@
       "type": "integer",
       "description": "Engine displacement in cubic centimeters.",
       "minimum": 1
+    },
+    "powerKw": {
+      "type": "number",
+      "description": "Published peak or nominal engine power in kilowatts.",
+      "exclusiveMinimum": 0
     },
     "cylinderCount": {
       "type": "integer",

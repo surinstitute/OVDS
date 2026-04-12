@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ovds.xyz/spec/v0.1/vehicle.schema.json",
+  "$id": "https://ovds.xyz/spec/v0.1.1/vehicle.schema.json",
   "title": "Open Vehicle Data Standard - Vehicle",
   "type": "object",
   "$defs": {
@@ -100,10 +100,29 @@
         "sourceUnit": ["sourceValue"]
       }
     },
+    "brakeType": {
+      "type": "string",
+      "description": "Published brake type for an axle.",
+      "enum": ["disc", "ventilated_disc", "drum", "carbon_ceramic_disc", "other"]
+    },
+    "brakeSetup": {
+      "type": "object",
+      "description": "Published front and rear brake configuration for the vehicle.",
+      "additionalProperties": false,
+      "required": ["front", "rear"],
+      "properties": {
+        "front": {
+          "$ref": "#/$defs/brakeType"
+        },
+        "rear": {
+          "$ref": "#/$defs/brakeType"
+        }
+      }
+    },
     "testCycle": {
       "type": "string",
-      "description": "Published test or certification cycle associated with a reported result.",
-      "enum": ["epa", "wltp", "nedc", "cltc", "jc08", "other"]
+      "description": "Published test or certification cycle associated with a reported result. EPA aggregate label values may use 'epa', while source-cycle values such as FTP and HFET may be recorded directly when the publication distinguishes them.",
+      "enum": ["epa", "ftp", "hfet", "wltp", "nedc", "cltc", "jc08", "other"]
     },
     "resultScope": {
       "type": "string",
@@ -330,6 +349,33 @@
         "isPrimary": {
           "type": "boolean",
           "description": "Indicates whether this is the primary published torque result for the vehicle."
+        }
+      }
+    },
+    "powerResult": {
+      "type": "object",
+      "description": "Published power result for the vehicle.",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit"],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "description": "Power metric being reported.",
+          "enum": ["combustion_engine_power", "electric_motor_power", "system_power"]
+        },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Published power value for the vehicle."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the power value.",
+          "enum": ["kw", "hp", "ps"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published power result for the vehicle."
         }
       }
     },
@@ -975,6 +1021,14 @@
           "$ref": "#/$defs/lengthMeasurement",
           "description": "Distance between the centers of the front and rear wheels."
         },
+        "frontTrackWidth": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Distance between the centers of the left and right front wheels."
+        },
+        "rearTrackWidth": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Distance between the centers of the left and right rear wheels."
+        },
         "footprint": {
           "$ref": "#/$defs/lengthMeasurement",
           "description": "Published vehicle footprint measurement as reported by the source or applicable standard."
@@ -995,6 +1049,11 @@
           "$ref": "#/$defs/massMeasurement",
           "description": "Maximum combined occupant and cargo load."
         },
+        "doorCount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Published number of side-access doors for the vehicle body."
+        },
         "passengerCapacity": {
           "type": "integer",
           "minimum": 1,
@@ -1011,6 +1070,10 @@
         "cargoCapacity": {
           "$ref": "#/$defs/volumeMeasurement",
           "description": "Published cargo or luggage compartment capacity."
+        },
+        "brakes": {
+          "$ref": "#/$defs/brakeSetup",
+          "description": "Published front and rear brake types."
         }
       }
     },
@@ -1060,6 +1123,13 @@
           "items": {
             "$ref": "#/$defs/torqueResult"
           }
+        },
+        "power": {
+          "type": "array",
+          "description": "Published power results for the vehicle.",
+          "items": {
+            "$ref": "#/$defs/powerResult"
+          }
         }
       }
     },
@@ -1074,7 +1144,7 @@
       }
     },
     "safety": {
-      "$ref": "https://ovds.xyz/spec/v0.1/safety.schema.json",
+      "$ref": "https://ovds.xyz/spec/v0.1.1/safety.schema.json",
       "description": "Normalized safety features for this vehicle configuration."
     },
     "compliance": {

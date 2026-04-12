@@ -72,6 +72,14 @@
       "value": 2760,
       "unit": "mm"
     },
+    "frontTrackWidth": {
+      "value": 1588,
+      "unit": "mm"
+    },
+    "rearTrackWidth": {
+      "value": 1576,
+      "unit": "mm"
+    },
     "groundClearance": {
       "value": 185,
       "unit": "mm"
@@ -84,6 +92,7 @@
       "value": 510,
       "unit": "kg"
     },
+    "doorCount": 5,
     "passengerCapacity": 5,
     "payloadCapacity": {
       "value": 510,
@@ -92,6 +101,10 @@
     "cargoCapacity": {
       "value": 495,
       "unit": "l"
+    },
+    "brakes": {
+      "front": "ventilated_disc",
+      "rear": "disc"
     }
   },
   "performance": {
@@ -145,6 +158,24 @@
         "metric": "system_torque",
         "value": 330,
         "unit": "nm",
+        "isPrimary": true
+      }
+    ],
+    "power": [
+      {
+        "metric": "combustion_engine_power",
+        "value": 84,
+        "unit": "kw"
+      },
+      {
+        "metric": "electric_motor_power",
+        "value": 140,
+        "unit": "kw"
+      },
+      {
+        "metric": "system_power",
+        "value": 140,
+        "unit": "kw",
         "isPrimary": true
       }
     ]

@@ -1,6 +1,6 @@
 # Transmission Schema
 
-Schema file: [spec/v0.1/transmission.schema.json](../../spec/v0.1/transmission.schema.json)
+Schema file: [spec/v0.1.1/transmission.schema.json](../../spec/v0.1.1/transmission.schema.json)
 
 ## Purpose
 

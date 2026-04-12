@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ovds.xyz/spec/v0.1/make.schema.json",
+  "$id": "https://ovds.xyz/spec/v0.1.1/make.schema.json",
   "title": "Open Vehicle Data Standard - Make",
   "type": "object",
   "additionalProperties": false,

@@ -1,6 +1,6 @@
 # Vehicle Schema
 
-Schema file: [spec/v0.1/vehicle.schema.json](../../spec/v0.1/vehicle.schema.json)
+Schema file: [spec/v0.1.1/vehicle.schema.json](../../spec/v0.1.1/vehicle.schema.json)
 
 ## Purpose
 
@@ -31,10 +31,11 @@ The vehicle schema represents a concrete published vehicle configuration.
 - `configuration.bodyStyle` captures published body style labels such as sedan, hatchback, or suv.
 - `origin` captures published assembly origin and is separate from lineage because origin may differ across otherwise similar vehicles.
 - `configuration.powertrain` already reserves `fuelCellStackId` for future expansion, even though v0.1 does not yet define a standalone fuel-cell stack schema.
-- `specs` keep SI-normalized values with optional source-unit traceability and can also include physical capacities such as passenger, payload, towing capacity, cargo capacity, ground clearance, and published footprint.
-- `performance` stores published results rather than fixed physical specs and can include acceleration, top speed, and torque in addition to efficiency, range, and emissions.
+- `specs` keep SI-normalized values with optional source-unit traceability and can also include physical capacities and dimensional details such as door count, passenger capacity, payload, towing capacity, cargo capacity, ground clearance, front track width, rear track width, published footprint, and front/rear brake type.
+- `performance` stores published results rather than fixed physical specs and can include acceleration, top speed, torque, and power in addition to efficiency, range, and emissions.
+- `performance` cycle labels can use aggregate values such as `epa` or more specific source cycles such as `ftp` and `hfet` when the source publishes them separately.
 - `costOfOwnership` is separate from performance and captures longer-horizon ownership estimates such as ten-year energy and maintenance cost.
 - `safety` is separate from compliance and models comparable safety capabilities rather than commercial package names.
 - `compliance` is intentionally separate so certification and regulatory data do not get mixed with measured performance results.
 
-See also [spec/v0.1/readme.md](../../spec/v0.1/readme.md).
+See also [spec/v0.1.1/readme.md](../../spec/v0.1.1/readme.md).

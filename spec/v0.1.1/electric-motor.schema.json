@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ovds.xyz/spec/v0.1/electric-motor.schema.json",
+  "$id": "https://ovds.xyz/spec/v0.1.1/electric-motor.schema.json",
   "title": "Open Vehicle Data Standard - Electric Motor",
   "type": "object",
   "additionalProperties": false,
@@ -15,6 +15,11 @@
       "type": "string",
       "description": "Electric motor technology.",
       "enum": ["ac_induction", "permanent_magnet", "externally_excited", "switched_reluctance", "other"]
+    },
+    "powerKw": {
+      "type": "number",
+      "description": "Published peak or nominal electric motor power in kilowatts.",
+      "exclusiveMinimum": 0
     },
     "position": {
       "type": "string",
