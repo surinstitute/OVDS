@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.1/engine.schema.json",
+  "title": "Open Vehicle Data Standard - Engine",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "fuelType"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "OVDS internal combustion engine identifier using a deterministic, human-readable uppercase slug.",
+      "pattern": "^OVDS-EG-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "fuelType": {
+      "type": "string",
+      "description": "Primary fuel used by this engine.",
+      "enum": ["gasoline", "diesel", "flex_fuel", "ethanol", "cng", "lpg", "hydrogen", "other"]
+    },
+    "displacementCc": {
+      "type": "integer",
+      "description": "Engine displacement in cubic centimeters.",
+      "minimum": 1
+    },
+    "cylinderCount": {
+      "type": "integer",
+      "description": "Number of cylinders.",
+      "minimum": 1
+    },
+    "aspiration": {
+      "type": "string",
+      "description": "Air induction strategy for the engine.",
+      "enum": ["naturally_aspirated", "turbocharged", "supercharged", "twincharged", "other"]
+    },
+    "layout": {
+      "type": "string",
+      "description": "Cylinder layout or engine arrangement.",
+      "enum": ["i", "v", "boxer", "w", "rotary", "other"]
+    }
+  }
+}

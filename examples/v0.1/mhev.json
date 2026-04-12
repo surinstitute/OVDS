@@ -1,0 +1,168 @@
+{
+  "id": "OVDS-V-AETHRA-SOLIS-2026-SPARK-1-5-MHEV-6MT",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-SOLIS",
+    "platformId": "OVDS-PF-NOVA-C",
+    "generationId": "OVDS-GN-AETHRA-SOLIS-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-SOLIS-2026-SPARK-1-5-MHEV"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "mild_hybrid",
+      "energySources": [
+        {
+          "source": "gasoline",
+          "isPrimary": true
+        }
+      ],
+      "energyStorage": [
+        {
+          "type": "fuel_tank",
+          "fuelCapacity": {
+            "value": 48,
+            "unit": "l"
+          },
+          "isPrimary": true
+        },
+        {
+          "type": "battery_pack",
+          "batteryPackId": "OVDS-BP-NOVA-048-MHEV",
+          "isPrimary": false
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-NOVA-15T",
+          "role": "mixed",
+          "isPrimary": true
+        }
+      ],
+      "tractionMotors": [
+        {
+          "electricMotorId": "OVDS-EM-NOVA-BSG-12",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "fwd"
+    },
+    "transmissionId": "OVDS-TR-6MT-240",
+    "bodyStyle": "hatchback"
+  },
+  "origin": {
+    "assemblyCountry": "ES",
+    "assemblyRegion": "Navarra",
+    "assemblyPlant": "Nova Mobility Plant"
+  },
+  "specs": {
+    "length": {
+      "value": 4320,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1795,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1460,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2640,
+      "unit": "mm"
+    },
+    "groundClearance": {
+      "value": 142,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1325,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 505,
+      "unit": "kg"
+    },
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 505,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 380,
+      "unit": "l"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "fuel_consumption",
+        "value": 5.4,
+        "unit": "l_per_100km",
+        "isPrimary": true
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 890,
+        "unit": "km",
+        "isPrimary": true
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_tailpipe",
+        "value": 122,
+        "unit": "g_per_km",
+        "isPrimary": true
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 8.9,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 208,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 270,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ]
+  },
+  "compliance": {
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Euro 6e",
+        "classification": "light_duty_passenger_car",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Solis Spark 1.5 MHEV 6MT",
+    "exampleType": "fictional",
+    "sourceNote": "Illustrative mild-hybrid reference example for OVDS v0.1"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "id": "OVDS-V-AETHRA-LYNX-2026-ECLIPSE-LONG-RANGE-RWD-84KWH",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-LYNX",
+    "platformId": "OVDS-PF-AURORA-EV",
+    "generationId": "OVDS-GN-AETHRA-LYNX-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-LYNX-2026-ECLIPSE-LONG-RANGE"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "battery_electric",
+      "energySources": [
+        {
+          "source": "grid_electricity",
+          "isPrimary": true
+        }
+      ],
+      "energyStorage": [
+        {
+          "type": "battery_pack",
+          "batteryPackId": "OVDS-BP-AURORA-84",
+          "isPrimary": true
+        }
+      ],
+      "tractionMotors": [
+        {
+          "electricMotorId": "OVDS-EM-REAR-SM-250",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "rwd"
+    },
+    "charging": {
+      "ports": [
+        {
+          "currentType": "ac_dc",
+          "connector": "ccs2",
+          "location": "rear_left"
+        }
+      ],
+      "acCharging": {
+        "maxPowerKw": 11,
+        "phases": 3
+      },
+      "dcCharging": {
+        "maxPowerKw": 175
+      },
+      "bidirectionalCharging": {
+        "v2l": false,
+        "v2h": false,
+        "v2g": false
+      },
+      "chargeTimes": [
+        {
+          "currentType": "dc",
+          "connector": "ccs2",
+          "supplyContext": "public_dc_fast",
+          "sourceStateOfChargePercent": 10,
+          "targetStateOfChargePercent": 80,
+          "durationMinutes": 27,
+          "powerKw": 175,
+          "isPrimary": true
+        },
+        {
+          "currentType": "ac",
+          "connector": "type2",
+          "supplyContext": "home_dedicated_ac",
+          "sourceStateOfChargePercent": 0,
+          "targetStateOfChargePercent": 100,
+          "durationMinutes": 480,
+          "powerKw": 11
+        },
+        {
+          "currentType": "ac",
+          "connector": "type2",
+          "supplyContext": "home_standard_outlet",
+          "sourceStateOfChargePercent": 0,
+          "targetStateOfChargePercent": 100,
+          "durationMinutes": 1680,
+          "powerKw": 2.3,
+          "note": "Published household-outlet estimate."
+        }
+      ]
+    },
+    "bodyStyle": "fastback"
+  },
+  "origin": {
+    "assemblyCountry": "PT",
+    "assemblyRegion": "Setubal",
+    "assemblyPlant": "Aurora Assembly Plant"
+  },
+  "specs": {
+    "length": {
+      "value": 4780,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1885,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1450,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2890,
+      "unit": "mm"
+    },
+    "footprint": {
+      "value": 5450,
+      "unit": "mm",
+      "sourceValue": 5.45,
+      "sourceUnit": "m"
+    },
+    "turningCircle": {
+      "value": 11600,
+      "unit": "mm",
+      "sourceValue": 11.6,
+      "sourceUnit": "m"
+    },
+    "groundClearance": {
+      "value": 168,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1960,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 500,
+      "unit": "kg"
+    },
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 500,
+      "unit": "kg"
+    },
+    "towingCapacity": {
+      "value": 1200,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 540,
+      "unit": "l"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "energy_consumption",
+        "value": 16.8,
+        "unit": "kwh_per_100km",
+        "isPrimary": true
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 530,
+        "unit": "km",
+        "isPrimary": true
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_tailpipe",
+        "value": 0,
+        "unit": "g_per_km",
+        "isPrimary": true
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 6.1,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 205,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 460,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ]
+  },
+  "costOfOwnership": {
+    "tenYear": {
+      "ownershipPeriodYears": 10,
+      "distancePerYear": 15000,
+      "distanceUnit": "km",
+      "currency": "EUR",
+      "energyCost": 7200,
+      "maintenanceCost": 3400,
+      "otherCost": 1800,
+      "totalCost": 12400
+    }
+  },
+  "safety": {
+    "collisionWarnings": {
+      "fcw": true,
+      "ldw": true,
+      "bsw": true,
+      "rctw": true
+    },
+    "collisionIntervention": {
+      "aebCity": true,
+      "aebPedestrian": true,
+      "aebHighway": true,
+      "aebRear": false
+    },
+    "drivingControlAssistance": {
+      "lka": true,
+      "lca": true,
+      "acc": true,
+      "activeDrivingAssistanceDirectDriverMonitoring": true
+    },
+    "rearSeatSafety": {
+      "childSafety": true,
+      "rearOccupantAlertEndOfTripReminder": true
+    },
+    "visibilityAndControl": {
+      "drl": true,
+      "rearViewCamera": true,
+      "esc": true,
+      "tractionControl": true,
+      "abs": true
+    },
+    "restraints": {
+      "airbagSideFront": true,
+      "airbagSideRear": true,
+      "headProtectionAirbag": true
+    }
+  },
+  "compliance": {
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Zero Tailpipe Emissions Declaration",
+        "classification": "battery_electric",
+        "isPrimary": true
+      }
+    ],
+    "safety": [
+      {
+        "region": "EU",
+        "standard": "Example NCAP",
+        "classification": "5_star",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Lynx Eclipse Long Range",
+    "exampleType": "fictional",
+    "marketRegion": "EU",
+    "hasHeatPump": true,
+    "sourceNote": "Illustrative fictional vehicle for OVDS v0.1"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.1/safety.schema.json",
+  "title": "Open Vehicle Data Standard - Safety Features",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "collisionWarnings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fcw": {
+          "type": "boolean",
+          "description": "Forward Collision Warning."
+        },
+        "ldw": {
+          "type": "boolean",
+          "description": "Lane Departure Warning."
+        },
+        "bsw": {
+          "type": "boolean",
+          "description": "Blind Spot Warning."
+        },
+        "rctw": {
+          "type": "boolean",
+          "description": "Rear Cross Traffic Warning."
+        }
+      }
+    },
+    "collisionIntervention": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "aebCity": {
+          "type": "boolean",
+          "description": "Automatic Emergency Braking at city speeds."
+        },
+        "aebPedestrian": {
+          "type": "boolean",
+          "description": "Automatic Emergency Braking with pedestrian detection."
+        },
+        "aebHighway": {
+          "type": "boolean",
+          "description": "Automatic Emergency Braking at highway speeds."
+        },
+        "aebRear": {
+          "type": "boolean",
+          "description": "Automatic Emergency Braking while reversing."
+        }
+      }
+    },
+    "drivingControlAssistance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lka": {
+          "type": "boolean",
+          "description": "Lane Keeping Assist."
+        },
+        "lca": {
+          "type": "boolean",
+          "description": "Lane Centering Assist."
+        },
+        "acc": {
+          "type": "boolean",
+          "description": "Adaptive Cruise Control."
+        },
+        "activeDrivingAssistanceDirectDriverMonitoring": {
+          "type": "boolean",
+          "description": "Active driving assistance with direct driver monitoring."
+        }
+      }
+    },
+    "rearSeatSafety": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "childSafety": {
+          "type": "boolean",
+          "description": "Child safety features and evaluations."
+        },
+        "rearOccupantAlertEndOfTripReminder": {
+          "type": "boolean",
+          "description": "Rear occupant alert with end-of-trip reminder."
+        }
+      }
+    },
+    "visibilityAndControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "drl": {
+          "type": "boolean",
+          "description": "Daytime Running Lights."
+        },
+        "rearViewCamera": {
+          "type": "boolean",
+          "description": "Rear view camera."
+        },
+        "esc": {
+          "type": "boolean",
+          "description": "Electronic Stability Control."
+        },
+        "tractionControl": {
+          "type": "boolean",
+          "description": "Traction control."
+        },
+        "abs": {
+          "type": "boolean",
+          "description": "Anti-lock braking system."
+        }
+      }
+    },
+    "restraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "airbagSideFront": {
+          "type": "boolean",
+          "description": "Front side airbags."
+        },
+        "airbagSideRear": {
+          "type": "boolean",
+          "description": "Rear side airbags."
+        },
+        "headProtectionAirbag": {
+          "type": "boolean",
+          "description": "Head protection or curtain airbag."
+        }
+      }
+    }
+  }
+}

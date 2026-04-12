@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.1/electric-motor.schema.json",
+  "title": "Open Vehicle Data Standard - Electric Motor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "OVDS electric motor identifier using a deterministic, human-readable uppercase slug.",
+      "pattern": "^OVDS-EM-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "motorType": {
+      "type": "string",
+      "description": "Electric motor technology.",
+      "enum": ["ac_induction", "permanent_magnet", "externally_excited", "switched_reluctance", "other"]
+    },
+    "position": {
+      "type": "string",
+      "description": "Nominal installation position for the motor.",
+      "enum": ["front", "rear", "front_left", "front_right", "rear_left", "rear_right", "center", "other"]
+    },
+    "coolingType": {
+      "type": "string",
+      "description": "Primary cooling strategy for the motor.",
+      "enum": ["air", "liquid", "oil", "other"]
+    }
+  }
+}

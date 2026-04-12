@@ -1,0 +1,168 @@
+{
+  "id": "OVDS-V-AETHRA-ORBIT-2026-GLIDE-2-0-HEV-ECVT",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-ORBIT",
+    "platformId": "OVDS-PF-AERIS-C",
+    "generationId": "OVDS-GN-AETHRA-ORBIT-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-ORBIT-2026-GLIDE-2-0-HEV"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "power_split_hybrid",
+      "energySources": [
+        {
+          "source": "gasoline",
+          "isPrimary": true
+        }
+      ],
+      "energyStorage": [
+        {
+          "type": "fuel_tank",
+          "fuelCapacity": {
+            "value": 43,
+            "unit": "l"
+          },
+          "isPrimary": true
+        },
+        {
+          "type": "battery_pack",
+          "batteryPackId": "OVDS-BP-ORBIT-NIMH-14",
+          "isPrimary": false
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-ORBIT-20A",
+          "role": "mixed",
+          "isPrimary": true
+        }
+      ],
+      "tractionMotors": [
+        {
+          "electricMotorId": "OVDS-EM-ORBIT-FRONT-80",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "fwd"
+    },
+    "transmissionId": "OVDS-TR-ECVT-POWER-SPLIT",
+    "bodyStyle": "crossover"
+  },
+  "origin": {
+    "assemblyCountry": "CZ",
+    "assemblyRegion": "Moravia-Silesia",
+    "assemblyPlant": "Orbit Assembly Complex"
+  },
+  "specs": {
+    "length": {
+      "value": 4510,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1835,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1600,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2700,
+      "unit": "mm"
+    },
+    "groundClearance": {
+      "value": 180,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1545,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 495,
+      "unit": "kg"
+    },
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 495,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 470,
+      "unit": "l"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "fuel_consumption",
+        "value": 4.4,
+        "unit": "l_per_100km",
+        "isPrimary": true
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 1020,
+        "unit": "km",
+        "isPrimary": true
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_tailpipe",
+        "value": 100,
+        "unit": "g_per_km",
+        "isPrimary": true
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 8,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 182,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 320,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ]
+  },
+  "compliance": {
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Euro 6e",
+        "classification": "full_hybrid",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Orbit Glide 2.0 HEV eCVT",
+    "exampleType": "fictional",
+    "sourceNote": "Illustrative power-split hybrid reference example for OVDS v0.1"
+  }
+}

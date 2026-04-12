@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.1/group.schema.json",
+  "title": "Open Vehicle Data Standard - Group",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "OVDS automotive group identifier using a deterministic, human-readable uppercase slug.",
+      "pattern": "^OVDS-GR-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the automotive group."
+    }
+  }
+}

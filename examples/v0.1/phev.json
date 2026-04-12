@@ -1,0 +1,230 @@
+{
+  "id": "OVDS-V-AETHRA-VEGA-2026-TOURING-2-5-PHEV-AWD",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-VEGA",
+    "platformId": "OVDS-PF-HELIOS-D",
+    "generationId": "OVDS-GN-AETHRA-VEGA-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-VEGA-2026-TOURING-2-5-PHEV"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "plug_in_hybrid",
+      "energySources": [
+        {
+          "source": "grid_electricity",
+          "isPrimary": true
+        },
+        {
+          "source": "gasoline",
+          "isPrimary": false
+        }
+      ],
+      "energyStorage": [
+        {
+          "type": "battery_pack",
+          "batteryPackId": "OVDS-BP-VEGA-19-PHEV",
+          "isPrimary": true
+        },
+        {
+          "type": "fuel_tank",
+          "fuelCapacity": {
+            "value": 45,
+            "unit": "l"
+          },
+          "isPrimary": false
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-VEGA-25A",
+          "role": "mixed",
+          "isPrimary": true
+        }
+      ],
+      "tractionMotors": [
+        {
+          "electricMotorId": "OVDS-EM-VEGA-REAR-120",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "awd"
+    },
+    "charging": {
+      "ports": [
+        {
+          "currentType": "ac",
+          "connector": "type2",
+          "location": "rear_left"
+        }
+      ],
+      "acCharging": {
+        "maxPowerKw": 7.4,
+        "phases": 1
+      },
+      "bidirectionalCharging": {
+        "v2l": false,
+        "v2h": false,
+        "v2g": false
+      },
+      "chargeTimes": [
+        {
+          "currentType": "ac",
+          "connector": "type2",
+          "supplyContext": "home_dedicated_ac",
+          "sourceStateOfChargePercent": 0,
+          "targetStateOfChargePercent": 100,
+          "durationMinutes": 195,
+          "powerKw": 7.4,
+          "isPrimary": true
+        },
+        {
+          "currentType": "ac",
+          "connector": "type2",
+          "supplyContext": "home_standard_outlet",
+          "sourceStateOfChargePercent": 0,
+          "targetStateOfChargePercent": 100,
+          "durationMinutes": 420,
+          "powerKw": 2.3,
+          "note": "Illustrative domestic outlet charge time."
+        }
+      ]
+    },
+    "transmissionId": "OVDS-TR-8AT-PHEV",
+    "bodyStyle": "wagon"
+  },
+  "origin": {
+    "assemblyCountry": "SK",
+    "assemblyRegion": "Zilina",
+    "assemblyPlant": "Helios Touring Plant"
+  },
+  "specs": {
+    "length": {
+      "value": 4725,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1860,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1490,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2825,
+      "unit": "mm"
+    },
+    "groundClearance": {
+      "value": 158,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1985,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 515,
+      "unit": "kg"
+    },
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 515,
+      "unit": "kg"
+    },
+    "towingCapacity": {
+      "value": 1500,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 510,
+      "unit": "l"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "fuel_consumption",
+        "value": 0.9,
+        "unit": "l_per_100km",
+        "isPrimary": true
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "energy_consumption",
+        "value": 18.4,
+        "unit": "kwh_per_100km"
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 790,
+        "unit": "km",
+        "isPrimary": true
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "electric_range",
+        "value": 92,
+        "unit": "km"
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_weighted",
+        "value": 21,
+        "unit": "g_per_km",
+        "isPrimary": true
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 6.7,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 205,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 540,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ]
+  },
+  "compliance": {
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Euro 6e",
+        "classification": "plug_in_hybrid",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Vega Touring 2.5 PHEV AWD",
+    "exampleType": "fictional",
+    "sourceNote": "Illustrative plug-in hybrid reference example for OVDS v0.1"
+  }
+}
