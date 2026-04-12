@@ -21,4 +21,4 @@ This documentation tree is intentionally tool-agnostic so it can later be publis
 
 ## Normative Source
 
-The normative versioned specification for v0.1.1 is defined in [spec/v0.1.1/readme.md](../spec/v0.1.1/readme.md).
+The normative versioned specification for v0.1.2 is defined in [spec/v0.1.2/readme.md](../spec/v0.1.2/readme.md).

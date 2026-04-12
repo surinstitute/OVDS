@@ -1,6 +1,6 @@
 # Engine Schema
 
-Schema file: [spec/v0.1.1/engine.schema.json](../../spec/v0.1.1/engine.schema.json)
+Schema file: [spec/v0.1.2/engine.schema.json](../../spec/v0.1.2/engine.schema.json)
 
 ## Purpose
 
@@ -8,7 +8,7 @@ The engine schema defines a reusable internal combustion engine entity.
 
 ## Current Scope
 
-The v0.1.1 schema currently captures a minimal but reusable engine record:
+The v0.1.2 schema currently captures a minimal but reusable engine record:
 
 - engine identifier
 - primary fuel type

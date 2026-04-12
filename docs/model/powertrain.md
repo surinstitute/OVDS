@@ -56,4 +56,4 @@ Fuel-cell stacks are intentionally not a standalone schema yet. The vehicle sche
 
 ## Current Scope
 
-In v0.1.1, the vehicle schema stores role-based powertrain usage references inside the vehicle record. The reusable entities themselves live in their own schemas under `spec/v0.1.1/`.
+In v0.1.2, the vehicle schema stores role-based powertrain usage references inside the vehicle record. The reusable entities themselves live in their own schemas under `spec/v0.1.2/`.

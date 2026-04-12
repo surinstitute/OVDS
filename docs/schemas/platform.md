@@ -1,6 +1,6 @@
 # Platform Schema
 
-Schema file: [spec/v0.1.1/platform.schema.json](../../spec/v0.1.1/platform.schema.json)
+Schema file: [spec/v0.1.2/platform.schema.json](../../spec/v0.1.2/platform.schema.json)
 
 ## Purpose
 

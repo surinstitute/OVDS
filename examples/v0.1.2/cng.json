@@ -1,0 +1,202 @@
+{
+  "id": "OVDS-V-AETHRA-CIVIS-2026-ECO-1-4-CNG-6MT",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-CIVIS",
+    "platformId": "OVDS-PF-NOVA-C",
+    "generationId": "OVDS-GN-AETHRA-CIVIS-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-CIVIS-2026-ECO-1-4-CNG"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "ice",
+      "energySources": [
+        {
+          "source": "cng",
+          "isPrimary": true
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-CIVIS-14CNG",
+          "role": "traction",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "fwd"
+    },
+    "emissionsControls": {
+      "catalyticConverter": true,
+      "catalyticConverterCount": 1,
+      "oxygenSensor": true,
+      "oxygenSensorCount": 2,
+      "egr": false,
+      "airPump": false,
+      "onboardDiagnostics": "eobd",
+      "durabilityStandard": "Euro 6e durability demonstration",
+      "particulateFilter": {
+        "present": false
+      }
+    },
+    "transmissionId": "OVDS-TR-6MT-CNG210",
+    "bodyStyle": "hatchback"
+  },
+  "origin": {
+    "assemblyCountry": "IT",
+    "assemblyRegion": "Piemonte",
+    "assemblyPlant": "Civis Eco Plant"
+  },
+  "specs": {
+    "length": {
+      "value": 4390,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1805,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1495,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2670,
+      "unit": "mm"
+    },
+    "frontTrackWidth": {
+      "value": 1552,
+      "unit": "mm"
+    },
+    "rearTrackWidth": {
+      "value": 1546,
+      "unit": "mm"
+    },
+    "groundClearance": {
+      "value": 150,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1388,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 492,
+      "unit": "kg"
+    },
+    "doorCount": 5,
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 492,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 355,
+      "unit": "l"
+    },
+    "brakes": {
+      "front": "ventilated_disc",
+      "rear": "disc"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "fuel_consumption",
+        "value": 4.2,
+        "unit": "kg_per_100km",
+        "isPrimary": true
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 420,
+        "unit": "km",
+        "isPrimary": true
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_tailpipe",
+        "value": 114,
+        "unit": "g_per_km",
+        "isPrimary": true
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "nox",
+        "value": 12,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "ch4",
+        "value": 9,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "nmhc",
+        "value": 14,
+        "unit": "mg_per_km"
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 10.9,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 188,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 230,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ],
+    "power": [
+      {
+        "metric": "combustion_engine_power",
+        "value": 96,
+        "unit": "kw",
+        "isPrimary": true
+      }
+    ]
+  },
+  "compliance": {
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Euro 6e",
+        "classification": "cng_passenger_car",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Civis Eco 1.4 CNG 6MT",
+    "exampleType": "fictional",
+    "sourceNote": "Illustrative natural-gas ICE reference example for OVDS v0.1.2"
+  }
+}

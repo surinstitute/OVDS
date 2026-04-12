@@ -1,6 +1,6 @@
 # Safety Schema
 
-Schema file: [spec/v0.1.1/safety.schema.json](../../spec/v0.1.1/safety.schema.json)
+Schema file: [spec/v0.1.2/safety.schema.json](../../spec/v0.1.2/safety.schema.json)
 
 ## Purpose
 

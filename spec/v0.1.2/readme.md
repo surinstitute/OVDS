@@ -1,4 +1,4 @@
-# OVDS Standard v0.1.x
+# OVDS Standard v0.1.2
 
 ## Status
 
@@ -6,13 +6,13 @@ Draft.
 
 ## Scope
 
-This document defines the semantic meaning and intended usage of the OVDS v0.1 schemas.
+This document defines the semantic meaning and intended usage of the OVDS v0.1.2 schemas.
 
 The JSON Schema files define structure. This document defines normative meaning.
 
 ## Entity Model
 
-OVDS v0.1 includes the following primary entities:
+OVDS v0.1.2 includes the following primary entities:
 
 - group
 - make
@@ -24,7 +24,7 @@ OVDS v0.1 includes the following primary entities:
 - battery pack
 - transmission
 
-Fuel-cell stacks are not yet defined as a standalone reusable schema in v0.1.
+Fuel-cell stacks are not yet defined as a standalone reusable schema in v0.1.2.
 The vehicle powertrain model reserves a `fuelCellStackId` reference so a future version can introduce that entity without redesigning the powertrain structure.
 
 ## Vehicle Semantics
@@ -44,7 +44,7 @@ They should be:
 - derived from canonical commercial hierarchy when the entity belongs to lineage
 - derived from stable technical identity when the entity is a reusable component
 
-The v0.1 identifier shape is:
+The v0.1.2 identifier shape is:
 
 - `OVDS-GR-...` for groups
 - `OVDS-MK-...` for makes
@@ -60,7 +60,7 @@ The v0.1 identifier shape is:
 - `OVDS-FC-...` for future fuel-cell stacks
 - `OVDS-V-...` for vehicles
 
-The `OVDS` namespace prefix is used consistently in v0.1 to match the standard name and avoid ambiguity with external identifier systems.
+The `OVDS` namespace prefix is used consistently in v0.1.2 to match the standard name and avoid ambiguity with external identifier systems.
 
 For lineage entities, identifiers should follow the commercial hierarchy already modeled by OVDS.
 
@@ -78,7 +78,7 @@ Uniqueness is scoped by entity level rather than forced across the full product 
 - `modelId` is unique for a model or nameplate.
 - `generationId` is unique for a generation.
 - `variantId` is unique for a commercial variant, but a variant may still map to multiple technical configurations.
-- `vehicle.id` is the most granular published identifier in v0.1 and should be unique for each concrete configuration record.
+- `vehicle.id` is the most granular published identifier in v0.1.2 and should be unique for each concrete configuration record.
 
 This means a single variant may legitimately have multiple vehicles beneath it, for example when the same trim is sold with multiple engines, battery packs, drivetrains, or transmissions.
 
@@ -110,6 +110,7 @@ The `configuration` block identifies the technical composition of the vehicle.
 
 - `powertrain` identifies the propulsion architecture and its energy roles.
 - `charging`, when present, identifies the charging interfaces, AC/DC charging capability, and published charging-time scenarios.
+- `emissionsControls`, when present, identifies the published emissions-control hardware and diagnostics fitted to the configuration.
 - `transmissionId`, when present, identifies the transmission used by the configuration.
 - `bodyStyle`, when present, identifies the published body style classification of the configuration.
 
@@ -128,6 +129,8 @@ The `specs` block may also contain published physical capacities and dimensional
 `footprint`, when present, is treated as a published physical measurement rather than an internally derived value.
 
 The `performance` block contains published results such as efficiency, range, emissions, acceleration, top speed, torque, and power.
+
+For combustion vehicles using gaseous fuels such as CNG, published efficiency may be represented with mass-based units such as `kg_per_100km` or `km_per_kg`.
 
 Reusable component schemas may also store their own published component power values, for example engine power or electric-motor power, while `performance.power` on the vehicle record remains the place for the published vehicle-level or system-level power result.
 
@@ -165,6 +168,8 @@ For example, a range-extended vehicle may use gasoline as an energy source, a co
 
 Fuel-cell electric vehicles are represented structurally in v0.1, but the referenced fuel-cell stack remains a forward-compatible placeholder until a dedicated schema is introduced.
 
+The `emissionsControls` block is part of `configuration` rather than `performance` because it describes installed hardware and diagnostics, not measured pollutant results. This allows OVDS to publish whether a configuration uses catalytic converters, oxygen sensors, EGR, secondary air injection, onboard-diagnostics standards, durability rules, and particulate filters without mixing that equipment data into test-cycle emissions outcomes.
+
 ## Performance And Compliance Semantics
 
 Efficiency, range, and emissions are modeled as separate published results rather than as static specifications.
@@ -175,6 +180,10 @@ Efficiency, range, and emissions are modeled as separate published results rathe
 - `performance.power` contains published combustion, electric-motor, or system power results.
 
 These values may vary by test cycle, scope, and market publication method.
+
+The emissions model supports both greenhouse-gas and criteria-pollutant reporting, including `co2_tailpipe`, `co2_weighted`, `co`, `hc`, `nmhc`, `ch4`, `n2o`, `nox`, `pm`, `pn`, and `evaporative_hc`.
+
+This allows OVDS to capture certification-style pollutant records as well as city and highway emissions results published under source cycles such as `ftp` and `hfet`.
 
 OVDS keeps `epa` as a valid aggregate cycle label for published US-market results, but also allows source-cycle values such as `ftp` and `hfet` when manufacturers or regulators publish the underlying EPA test-cycle results separately.
 
@@ -191,9 +200,9 @@ Compliance data is modeled separately from those results.
 
 Safety features are modeled in a dedicated schema and grouped by capability area rather than by commercial package.
 
-The v0.1 safety model uses grouped boolean features for cross-brand comparability.
+The v0.1.2 safety model uses grouped boolean features for cross-brand comparability.
 
-This taxonomy is intentionally simple in v0.1 and may evolve in future versions without changing the role of safety as a standalone comparable feature set.
+This taxonomy is intentionally simple in v0.1.2 and may evolve in future versions without changing the role of safety as a standalone comparable feature set.
 
 ## Reusable Technical Entities
 
@@ -209,4 +218,4 @@ This allows a single technical entity to be referenced by multiple model years, 
 
 The content under `docs/` is explanatory documentation intended to support implementers and future site generation.
 
-This `readme.md` file is the normative source for v0.1 semantic rules.
+This `readme.md` file is the normative source for v0.1.2 semantic rules.

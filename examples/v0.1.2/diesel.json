@@ -1,106 +1,99 @@
 {
-  "id": "OVDS-V-AETHRA-SOLIS-2026-SPARK-1-5-MHEV-6MT",
+  "id": "OVDS-V-AETHRA-ATLAS-2026-TOUR-2-0-DIESEL-8AT",
   "lineage": {
     "makeId": "OVDS-MK-AETHRA",
-    "modelId": "OVDS-MD-AETHRA-SOLIS",
-    "platformId": "OVDS-PF-NOVA-C",
-    "generationId": "OVDS-GN-AETHRA-SOLIS-1",
+    "modelId": "OVDS-MD-AETHRA-ATLAS",
+    "platformId": "OVDS-PF-HELIOS-D",
+    "generationId": "OVDS-GN-AETHRA-ATLAS-1",
     "modelYear": 2026,
-    "variantId": "OVDS-VR-AETHRA-SOLIS-2026-SPARK-1-5-MHEV"
+    "variantId": "OVDS-VR-AETHRA-ATLAS-2026-TOUR-2-0-DIESEL"
   },
   "configuration": {
     "powertrain": {
-      "architecture": "mild_hybrid",
+      "architecture": "ice",
       "energySources": [
         {
-          "source": "gasoline",
+          "source": "diesel",
           "isPrimary": true
-        }
-      ],
-      "energyStorage": [
-        {
-          "type": "fuel_tank",
-          "fuelCapacity": {
-            "value": 48,
-            "unit": "l"
-          },
-          "isPrimary": true
-        },
-        {
-          "type": "battery_pack",
-          "batteryPackId": "OVDS-BP-NOVA-048-MHEV",
-          "isPrimary": false
         }
       ],
       "energyConverters": [
         {
           "type": "combustion_engine",
-          "engineId": "OVDS-EG-NOVA-15T",
-          "role": "mixed",
-          "isPrimary": true
-        }
-      ],
-      "tractionMotors": [
-        {
-          "electricMotorId": "OVDS-EM-NOVA-BSG-12",
+          "engineId": "OVDS-EG-ATLAS-20D",
+          "role": "traction",
           "isPrimary": true
         }
       ],
       "driveType": "fwd"
     },
-    "transmissionId": "OVDS-TR-6MT-240",
-    "bodyStyle": "hatchback"
+    "emissionsControls": {
+      "catalyticConverter": true,
+      "catalyticConverterCount": 1,
+      "oxygenSensor": true,
+      "oxygenSensorCount": 2,
+      "egr": true,
+      "airPump": false,
+      "onboardDiagnostics": "eobd",
+      "durabilityStandard": "Euro 6e durability demonstration",
+      "particulateFilter": {
+        "present": true,
+        "type": "dpf"
+      }
+    },
+    "transmissionId": "OVDS-TR-8AT-D240",
+    "bodyStyle": "wagon"
   },
   "origin": {
-    "assemblyCountry": "ES",
-    "assemblyRegion": "Navarra",
-    "assemblyPlant": "Nova Mobility Plant"
+    "assemblyCountry": "CZ",
+    "assemblyRegion": "Moravia-Silesia",
+    "assemblyPlant": "Atlas Touring Plant"
   },
   "specs": {
     "length": {
-      "value": 4320,
+      "value": 4685,
       "unit": "mm"
     },
     "width": {
-      "value": 1795,
+      "value": 1840,
       "unit": "mm"
     },
     "height": {
-      "value": 1460,
+      "value": 1480,
       "unit": "mm"
     },
     "wheelbase": {
-      "value": 2640,
+      "value": 2790,
       "unit": "mm"
     },
     "frontTrackWidth": {
-      "value": 1548,
+      "value": 1586,
       "unit": "mm"
     },
     "rearTrackWidth": {
-      "value": 1536,
+      "value": 1578,
       "unit": "mm"
     },
     "groundClearance": {
-      "value": 142,
+      "value": 154,
       "unit": "mm"
     },
     "curbWeight": {
-      "value": 1325,
+      "value": 1565,
       "unit": "kg"
     },
     "maxLoad": {
-      "value": 505,
+      "value": 560,
       "unit": "kg"
     },
     "doorCount": 5,
     "passengerCapacity": 5,
     "payloadCapacity": {
-      "value": 505,
+      "value": 560,
       "unit": "kg"
     },
     "cargoCapacity": {
-      "value": 380,
+      "value": 610,
       "unit": "l"
     },
     "brakes": {
@@ -114,7 +107,7 @@
         "cycle": "wltp",
         "scope": "combined",
         "metric": "fuel_consumption",
-        "value": 5.4,
+        "value": 4.8,
         "unit": "l_per_100km",
         "isPrimary": true
       }
@@ -124,7 +117,7 @@
         "cycle": "wltp",
         "scope": "combined",
         "metric": "total_range",
-        "value": 890,
+        "value": 1140,
         "unit": "km",
         "isPrimary": true
       }
@@ -134,22 +127,43 @@
         "cycle": "wltp",
         "scope": "combined",
         "metric": "co2_tailpipe",
-        "value": 122,
+        "value": 127,
         "unit": "g_per_km",
         "isPrimary": true
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "nox",
+        "value": 42,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "pm",
+        "value": 2.8,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "pn",
+        "value": 410000000000,
+        "unit": "number_per_km"
       }
     ],
     "acceleration": [
       {
         "metric": "0_100_kmh",
-        "value": 8.9,
+        "value": 8.4,
         "unit": "s",
         "isPrimary": true
       }
     ],
     "topSpeed": [
       {
-        "value": 208,
+        "value": 223,
         "unit": "km_h",
         "isPrimary": true
       }
@@ -157,7 +171,7 @@
     "torque": [
       {
         "metric": "system_torque",
-        "value": 270,
+        "value": 400,
         "unit": "nm",
         "isPrimary": true
       }
@@ -165,17 +179,7 @@
     "power": [
       {
         "metric": "combustion_engine_power",
-        "value": 96,
-        "unit": "kw"
-      },
-      {
-        "metric": "electric_motor_power",
-        "value": 12,
-        "unit": "kw"
-      },
-      {
-        "metric": "system_power",
-        "value": 100,
+        "value": 147,
         "unit": "kw",
         "isPrimary": true
       }
@@ -186,14 +190,14 @@
       {
         "region": "EU",
         "standard": "Euro 6e",
-        "classification": "light_duty_passenger_car",
+        "classification": "diesel_passenger_car",
         "isPrimary": true
       }
     ]
   },
   "attributes": {
-    "displayName": "Aethra Solis Spark 1.5 MHEV 6MT",
+    "displayName": "Aethra Atlas Tour 2.0 Diesel 8AT",
     "exampleType": "fictional",
-    "sourceNote": "Illustrative mild-hybrid reference example for OVDS v0.1"
+    "sourceNote": "Illustrative diesel ICE reference example for OVDS v0.1.2"
   }
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ovds.xyz/spec/v0.1.1/vehicle.schema.json",
+  "$id": "https://ovds.xyz/spec/v0.1.2/vehicle.schema.json",
   "title": "Open Vehicle Data Standard - Vehicle",
   "type": "object",
   "$defs": {
@@ -154,7 +154,7 @@
         "unit": {
           "type": "string",
           "description": "Unit associated with the efficiency value.",
-          "enum": ["l_per_100km", "kwh_per_100km", "wh_per_km", "mpg_us", "mpg_imp", "km_per_l"]
+          "enum": ["l_per_100km", "kg_per_100km", "kwh_per_100km", "wh_per_km", "mpg_us", "mpg_imp", "km_per_l", "km_per_kg"]
         },
         "isPrimary": {
           "type": "boolean",
@@ -258,7 +258,7 @@
         "metric": {
           "type": "string",
           "description": "Emissions metric being reported.",
-          "enum": ["co2_tailpipe", "co2_weighted", "nox", "pm", "pn"]
+          "enum": ["co2_tailpipe", "co2_weighted", "co", "hc", "nmhc", "ch4", "n2o", "nox", "pm", "pn", "evaporative_hc"]
         },
         "value": {
           "type": "number",
@@ -268,7 +268,7 @@
         "unit": {
           "type": "string",
           "description": "Unit associated with the emissions value.",
-          "enum": ["g_per_km", "mg_per_km", "number_per_km"]
+          "enum": ["g_per_km", "mg_per_km", "number_per_km", "g_per_pba"]
         },
         "isPrimary": {
           "type": "boolean",
@@ -557,6 +557,81 @@
         "isPrimary": {
           "type": "boolean",
           "description": "Indicates whether this is the primary compliance record in its category."
+        }
+      }
+    },
+    "particulateFilter": {
+      "type": "object",
+      "description": "Published particulate-filter fitment for the vehicle when applicable.",
+      "additionalProperties": false,
+      "required": ["present"],
+      "properties": {
+        "present": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle is equipped with a particulate filter."
+        },
+        "type": {
+          "type": "string",
+          "description": "Particulate-filter type when the vehicle is equipped with one.",
+          "enum": ["gpf", "dpf", "other"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "present": { "const": true }
+            },
+            "required": ["present"]
+          },
+          "then": {
+            "required": ["type"]
+          }
+        }
+      ]
+    },
+    "emissionsControls": {
+      "type": "object",
+      "description": "Published emissions-control hardware and diagnostics fitted to the vehicle configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "catalyticConverter": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle is equipped with a catalytic converter."
+        },
+        "catalyticConverterCount": {
+          "type": "integer",
+          "description": "Number of catalytic converters when published.",
+          "minimum": 1
+        },
+        "oxygenSensor": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle is equipped with oxygen sensors."
+        },
+        "oxygenSensorCount": {
+          "type": "integer",
+          "description": "Number of oxygen sensors when published.",
+          "minimum": 1
+        },
+        "egr": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle uses an exhaust gas recirculation system."
+        },
+        "airPump": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle uses a secondary air injection pump."
+        },
+        "onboardDiagnostics": {
+          "type": "string",
+          "description": "Published onboard-diagnostics standard for emissions monitoring.",
+          "enum": ["obdii", "eobd", "other"]
+        },
+        "durabilityStandard": {
+          "type": "string",
+          "description": "Published durability standard associated with the emissions-control system."
+        },
+        "particulateFilter": {
+          "$ref": "#/$defs/particulateFilter"
         }
       }
     },
@@ -948,6 +1023,9 @@
         "charging": {
           "$ref": "#/$defs/charging"
         },
+        "emissionsControls": {
+          "$ref": "#/$defs/emissionsControls"
+        },
         "transmissionId": {
           "type": "string",
           "description": "Transmission identifier when applicable, using a deterministic uppercase slug.",
@@ -1144,7 +1222,7 @@
       }
     },
     "safety": {
-      "$ref": "https://ovds.xyz/spec/v0.1.1/safety.schema.json",
+      "$ref": "https://ovds.xyz/spec/v0.1.2/safety.schema.json",
       "description": "Normalized safety features for this vehicle configuration."
     },
     "compliance": {

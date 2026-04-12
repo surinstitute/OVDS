@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ovds.xyz/spec/v0.1.1/group.schema.json",
+  "$id": "https://ovds.xyz/spec/v0.1.2/group.schema.json",
   "title": "Open Vehicle Data Standard - Group",
   "type": "object",
   "additionalProperties": false,

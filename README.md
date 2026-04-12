@@ -9,11 +9,11 @@ This repository contains the specification only. It does not contain backend cod
 ## Documentation
 
 - Overview: [docs/index.md](docs/index.md)
-- Normative spec: [spec/v0.1.1/readme.md](spec/v0.1.1/readme.md)
+- Normative spec: [spec/v0.1.2/readme.md](spec/v0.1.2/readme.md)
 
 ## Data Model
 
-OVDS v0.1.1 is organized around a concrete vehicle record with separate reusable technical entities.
+OVDS v0.1.2 is organized around a concrete vehicle record with separate reusable technical entities.
 
 - Group: reusable automotive group definition above makes
 - Make: reusable brand or marque definition
@@ -37,17 +37,17 @@ This keeps commercial lineage separate from technical composition while reducing
 
 ## Core Vehicle Model
 
-The current v0.1.1 schemas are defined in:
+The current v0.1.2 schemas are defined in:
 
-- `spec/v0.1.1/vehicle.schema.json`
-- `spec/v0.1.1/group.schema.json`
-- `spec/v0.1.1/make.schema.json`
-- `spec/v0.1.1/platform.schema.json`
-- `spec/v0.1.1/safety.schema.json`
-- `spec/v0.1.1/engine.schema.json`
-- `spec/v0.1.1/electric-motor.schema.json`
-- `spec/v0.1.1/battery-pack.schema.json`
-- `spec/v0.1.1/transmission.schema.json`
+- `spec/v0.1.2/vehicle.schema.json`
+- `spec/v0.1.2/group.schema.json`
+- `spec/v0.1.2/make.schema.json`
+- `spec/v0.1.2/platform.schema.json`
+- `spec/v0.1.2/safety.schema.json`
+- `spec/v0.1.2/engine.schema.json`
+- `spec/v0.1.2/electric-motor.schema.json`
+- `spec/v0.1.2/battery-pack.schema.json`
+- `spec/v0.1.2/transmission.schema.json`
 
 The vehicle schema is structured around these top-level blocks:
 
@@ -70,6 +70,8 @@ Within `configuration`, powertrain data references reusable engine, electric mot
 
 `configuration` may also include a dedicated `charging` block for published charging ports, AC/DC charging capability, and charging-time scenarios such as `10-80` or `0-100` under specific connector, power, and supply-context conditions.
 
+`configuration` may also include `emissionsControls` for published catalytic-converter fitment, oxygen sensors, EGR, secondary air injection, onboard diagnostics, durability standard, and particulate filters.
+
 `origin` captures the published assembly location for the concrete vehicle configuration, such as country, region, or plant when known.
 
 The current powertrain model is role-based and separates:
@@ -91,7 +93,7 @@ Safety features are modeled separately from both compliance and commercial packa
 
 ## Versioning
 
-OVDS versions are published by directory within the repository, for example `spec/v0.1.1/`.
+OVDS versions are published by directory within the repository, for example `spec/v0.1.2/`.
 
 This repository does not use long-lived branches as the primary versioning mechanism for the standard.
 
@@ -99,7 +101,7 @@ The intended release strategy is:
 
 - versioned specification directories in `spec/`
 - matching explanatory documentation under `docs/versions/`
-- Git tags for official published releases such as `v0.1.0` and `v0.1.1`
+- Git tags for official published releases such as `v0.1.0`, `v0.1.1`, and `v0.1.2`
 
 This keeps multiple specification versions visible in one repository while making published releases easy to reference and later expose in generated documentation sites.
 
@@ -133,14 +135,14 @@ You can also validate a concrete JSON document against a specific schema $id:
 
 ```bash
 uv run python scripts/validate_schemas.py \
-  --schema-id https://ovds.xyz/spec/v0.1.1/vehicle.schema.json \
-  --instance examples/v0.1.1/ev.json
+  --schema-id https://ovds.xyz/spec/v0.1.2/vehicle.schema.json \
+  --instance examples/v0.1.2/ev.json
 ```
 
 The validation script loads local schemas from `spec/` into an in-memory registry so
 canonical `$id` references resolve without network access.
 
-Reference examples under `examples/v0.1.1/` currently cover a battery-electric vehicle plus mild-hybrid, full-hybrid, plug-in hybrid, and series-hybrid configurations.
+Reference examples under `examples/v0.1.2/` currently cover battery-electric, diesel ICE, natural-gas ICE, mild-hybrid, full-hybrid, plug-in hybrid, and series-hybrid configurations.
 
 ## Compliance
 
