@@ -1,0 +1,265 @@
+{
+  "id": "OVDS-V-AETHRA-ATLAS-2026-TOUR-2-0-DIESEL-8AT",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-ATLAS",
+    "platformId": "OVDS-PF-HELIOS-D",
+    "generationId": "OVDS-GN-AETHRA-ATLAS-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-ATLAS-2026-TOUR-2-0-DIESEL"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "ice",
+      "energySources": [
+        {
+          "source": "diesel",
+          "isPrimary": true
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-ATLAS-20D",
+          "role": "traction",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "fwd"
+    },
+    "emissionsControls": {
+      "catalyticConverter": true,
+      "catalyticConverterCount": 1,
+      "catalystSystems": [
+        {
+          "type": "diesel_oxidation",
+          "placement": "close_coupled",
+          "count": 1
+        },
+        {
+          "type": "scr",
+          "placement": "underfloor",
+          "count": 1
+        }
+      ],
+      "oxygenSensor": true,
+      "oxygenSensorCount": 2,
+      "emissionsSensors": [
+        {
+          "sensorType": "oxygen",
+          "placement": "upstream",
+          "relativeTo": "catalyst",
+          "count": 1
+        },
+        {
+          "sensorType": "oxygen",
+          "placement": "downstream",
+          "relativeTo": "catalyst",
+          "count": 1
+        },
+        {
+          "sensorType": "nox",
+          "placement": "downstream",
+          "relativeTo": "scr",
+          "count": 1
+        }
+      ],
+      "egr": true,
+      "airPump": false,
+      "onboardDiagnostics": "eobd",
+      "durabilityStandard": "Euro 6e durability demonstration",
+      "particulateFilter": {
+        "present": true,
+        "type": "dpf"
+      }
+    },
+    "transmissionId": "OVDS-TR-8AT-D240",
+    "bodyStyle": "wagon"
+  },
+  "origin": {
+    "assemblyCountry": "CZ",
+    "assemblyRegion": "Moravia-Silesia",
+    "assemblyPlant": "Atlas Touring Plant"
+  },
+  "specs": {
+    "length": {
+      "value": 4685,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1840,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1480,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2790,
+      "unit": "mm"
+    },
+    "frontTrackWidth": {
+      "value": 1586,
+      "unit": "mm"
+    },
+    "rearTrackWidth": {
+      "value": 1578,
+      "unit": "mm"
+    },
+    "groundClearance": {
+      "value": 154,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1565,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 560,
+      "unit": "kg"
+    },
+    "doorCount": 5,
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 560,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 610,
+      "unit": "l"
+    },
+    "brakes": {
+      "front": "ventilated_disc",
+      "rear": "disc"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "fuel_consumption",
+        "value": 4.8,
+        "unit": "l_per_100km",
+        "isPrimary": true
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 1140,
+        "unit": "km",
+        "isPrimary": true
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_tailpipe",
+        "value": 127,
+        "unit": "g_per_km",
+        "isPrimary": true
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "nox",
+        "value": 42,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "pm",
+        "value": 2.8,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "pn",
+        "value": 410000000000,
+        "unit": "number_per_km"
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 8.4,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 223,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 400,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ],
+    "power": [
+      {
+        "metric": "combustion_engine_power",
+        "value": 147,
+        "unit": "kw",
+        "isPrimary": true
+      }
+    ]
+  },
+  "compliance": {
+    "approvals": [
+      {
+        "authority": "EU",
+        "jurisdiction": "EU",
+        "scheme": "type_approval",
+        "domain": "emissions",
+        "standard": "Euro 6e",
+        "classification": "passenger_car",
+        "identifier": "e9*2018/858*12345*00",
+        "status": "approved",
+        "validFrom": "2026-01-15",
+        "isPrimary": true,
+        "references": {
+          "approvingAuthority": "ES",
+          "variantCode": "AT20D",
+          "versionCode": "WGN8AT"
+        },
+        "sourceDocs": [
+          {
+            "url": "https://example.org/regulatory/eu/atlas-tour-20d-type-approval.pdf",
+            "title": "EU Type Approval Record for Aethra Atlas Tour 2.0 Diesel",
+            "publisher": "EU Approval Registry",
+            "documentType": "approval_record",
+            "publishedAt": "2026-01-15",
+            "language": "en",
+            "isPrimary": true
+          }
+        ]
+      }
+    ],
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Euro 6e",
+        "classification": "diesel_passenger_car",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Atlas Tour 2.0 Diesel 8AT",
+    "exampleType": "fictional",
+    "sourceNote": "Illustrative diesel ICE reference example for OVDS v0.2.0"
+  }
+}

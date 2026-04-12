@@ -17,8 +17,9 @@ This documentation tree is intentionally tool-agnostic so it can later be publis
 - [Battery pack schema](schemas/battery-pack.md)
 - [Transmission schema](schemas/transmission.md)
 - [Safety schema](schemas/safety.md)
+- [Version v0.2.x](versions/v0.2.x.md)
 - [Version v0.1.x](versions/v0.1.x.md)
 
 ## Normative Source
 
-The normative versioned specification for v0.1.2 is defined in [spec/v0.1.2/readme.md](../spec/v0.1.2/readme.md).
+The normative versioned specification for v0.2.0 is defined in [spec/v0.2.0/readme.md](../spec/v0.2.0/readme.md).

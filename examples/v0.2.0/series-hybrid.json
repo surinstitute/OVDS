@@ -1,0 +1,198 @@
+{
+  "id": "OVDS-V-AETHRA-NOMAD-2026-FLOW-SERIES-HYBRID",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-NOMAD",
+    "platformId": "OVDS-PF-LUMEN-S",
+    "generationId": "OVDS-GN-AETHRA-NOMAD-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-NOMAD-2026-FLOW-SERIES-HYBRID"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "series_hybrid",
+      "energySources": [
+        {
+          "source": "gasoline",
+          "isPrimary": true
+        }
+      ],
+      "energyStorage": [
+        {
+          "type": "battery_pack",
+          "batteryPackId": "OVDS-BP-LUMEN-22-SH",
+          "isPrimary": true
+        },
+        {
+          "type": "fuel_tank",
+          "fuelCapacity": {
+            "value": 50,
+            "unit": "l"
+          },
+          "isPrimary": false
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-LUMEN-15G",
+          "role": "generator",
+          "isPrimary": true
+        }
+      ],
+      "tractionMotors": [
+        {
+          "electricMotorId": "OVDS-EM-LUMEN-FRONT-140",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "fwd"
+    },
+    "bodyStyle": "crossover"
+  },
+  "origin": {
+    "assemblyCountry": "PT",
+    "assemblyRegion": "Aveiro",
+    "assemblyPlant": "Lumen Mobility Hub"
+  },
+  "specs": {
+    "length": {
+      "value": 4620,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1845,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1625,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2760,
+      "unit": "mm"
+    },
+    "frontTrackWidth": {
+      "value": 1588,
+      "unit": "mm"
+    },
+    "rearTrackWidth": {
+      "value": 1576,
+      "unit": "mm"
+    },
+    "groundClearance": {
+      "value": 185,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1765,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 510,
+      "unit": "kg"
+    },
+    "doorCount": 5,
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 510,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 495,
+      "unit": "l"
+    },
+    "brakes": {
+      "front": "ventilated_disc",
+      "rear": "disc"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "fuel_consumption",
+        "value": 5.1,
+        "unit": "l_per_100km",
+        "isPrimary": true
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 880,
+        "unit": "km",
+        "isPrimary": true
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_tailpipe",
+        "value": 116,
+        "unit": "g_per_km",
+        "isPrimary": true
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 7.8,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 172,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 330,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ],
+    "power": [
+      {
+        "metric": "combustion_engine_power",
+        "value": 84,
+        "unit": "kw"
+      },
+      {
+        "metric": "electric_motor_power",
+        "value": 140,
+        "unit": "kw"
+      },
+      {
+        "metric": "system_power",
+        "value": 140,
+        "unit": "kw",
+        "isPrimary": true
+      }
+    ]
+  },
+  "compliance": {
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Euro 6e",
+        "classification": "series_hybrid",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Nomad Flow Series Hybrid",
+    "exampleType": "fictional",
+    "sourceNote": "Illustrative series-hybrid reference example for OVDS v0.2.0"
+  }
+}

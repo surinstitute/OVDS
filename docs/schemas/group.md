@@ -1,6 +1,6 @@
 # Group Schema
 
-Schema file: [spec/v0.1.2/group.schema.json](../../spec/v0.1.2/group.schema.json)
+Schema file: [spec/v0.2.0/group.schema.json](../../spec/v0.2.0/group.schema.json)
 
 ## Purpose
 

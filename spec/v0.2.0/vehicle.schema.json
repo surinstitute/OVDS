@@ -1,0 +1,1453 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.2.0/vehicle.schema.json",
+  "title": "Open Vehicle Data Standard - Vehicle",
+  "type": "object",
+  "$defs": {
+    "lengthMeasurement": {
+      "type": "object",
+      "description": "Canonical length measurement in millimeters, with optional source measurement preserved for traceability.",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Canonical OVDS length value expressed in millimeters."
+        },
+        "unit": {
+          "type": "string",
+          "const": "mm",
+          "description": "Canonical OVDS unit for length measurements."
+        },
+        "sourceValue": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Original published length value before normalization."
+        },
+        "sourceUnit": {
+          "type": "string",
+          "enum": ["mm", "cm", "m", "in", "ft"],
+          "description": "Original published unit for the source length value."
+        }
+      },
+      "dependentRequired": {
+        "sourceValue": ["sourceUnit"],
+        "sourceUnit": ["sourceValue"]
+      }
+    },
+    "massMeasurement": {
+      "type": "object",
+      "description": "Canonical mass measurement in kilograms, with optional source measurement preserved for traceability.",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Canonical OVDS mass value expressed in kilograms."
+        },
+        "unit": {
+          "type": "string",
+          "const": "kg",
+          "description": "Canonical OVDS unit for mass measurements."
+        },
+        "sourceValue": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Original published mass value before normalization."
+        },
+        "sourceUnit": {
+          "type": "string",
+          "enum": ["kg", "g", "lb"],
+          "description": "Original published unit for the source mass value."
+        }
+      },
+      "dependentRequired": {
+        "sourceValue": ["sourceUnit"],
+        "sourceUnit": ["sourceValue"]
+      }
+    },
+    "volumeMeasurement": {
+      "type": "object",
+      "description": "Canonical volume measurement in liters, with optional source measurement preserved for traceability.",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Canonical OVDS volume value expressed in liters."
+        },
+        "unit": {
+          "type": "string",
+          "const": "l",
+          "description": "Canonical OVDS unit for volume measurements."
+        },
+        "sourceValue": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Original published volume value before normalization."
+        },
+        "sourceUnit": {
+          "type": "string",
+          "enum": ["l", "ml", "gal_us", "gal_imp"],
+          "description": "Original published unit for the source volume value."
+        }
+      },
+      "dependentRequired": {
+        "sourceValue": ["sourceUnit"],
+        "sourceUnit": ["sourceValue"]
+      }
+    },
+    "brakeType": {
+      "type": "string",
+      "description": "Published brake type for an axle.",
+      "enum": ["disc", "ventilated_disc", "drum", "carbon_ceramic_disc", "other"]
+    },
+    "brakeSetup": {
+      "type": "object",
+      "description": "Published front and rear brake configuration for the vehicle.",
+      "additionalProperties": false,
+      "required": ["front", "rear"],
+      "properties": {
+        "front": {
+          "$ref": "#/$defs/brakeType"
+        },
+        "rear": {
+          "$ref": "#/$defs/brakeType"
+        }
+      }
+    },
+    "testCycle": {
+      "type": "string",
+      "description": "Published test or certification cycle associated with a reported result. EPA aggregate label values may use 'epa', while source-cycle values such as FTP and HFET may be recorded directly when the publication distinguishes them.",
+      "enum": ["epa", "ftp", "hfet", "wltp", "nedc", "cltc", "jc08", "other"]
+    },
+    "resultScope": {
+      "type": "string",
+      "description": "Driving scope covered by a reported result.",
+      "enum": ["city", "highway", "combined", "mixed", "other"]
+    },
+    "efficiencyResult": {
+      "type": "object",
+      "description": "Published efficiency result for a specific cycle and scope.",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit"],
+      "properties": {
+        "cycle": {
+          "$ref": "#/$defs/testCycle"
+        },
+        "scope": {
+          "$ref": "#/$defs/resultScope"
+        },
+        "metric": {
+          "type": "string",
+          "description": "Efficiency metric being reported.",
+          "enum": ["fuel_consumption", "energy_consumption", "fuel_economy"]
+        },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Normalized published value for this efficiency result."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the efficiency value.",
+          "enum": ["l_per_100km", "kg_per_100km", "kwh_per_100km", "wh_per_km", "mpg_us", "mpg_imp", "km_per_l", "km_per_kg"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published efficiency result for the vehicle."
+        }
+      }
+    },
+    "costOfOwnershipEstimate": {
+      "type": "object",
+      "description": "Published cost-of-ownership estimate for a ten-year horizon.",
+      "additionalProperties": false,
+      "required": ["ownershipPeriodYears", "distancePerYear", "distanceUnit", "currency", "energyCost", "maintenanceCost", "totalCost"],
+      "properties": {
+        "ownershipPeriodYears": {
+          "type": "integer",
+          "const": 10,
+          "description": "Ownership horizon in years for this estimate."
+        },
+        "distancePerYear": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Distance driven per year in the ownership estimate."
+        },
+        "distanceUnit": {
+          "type": "string",
+          "description": "Unit associated with the annual distance value.",
+          "enum": ["km", "mi"]
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code used for the cost values.",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "energyCost": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Projected ten-year fuel or electricity cost."
+        },
+        "maintenanceCost": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Projected ten-year maintenance cost."
+        },
+        "otherCost": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Optional projected ten-year ownership cost outside energy and maintenance."
+        },
+        "totalCost": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Projected total ten-year ownership cost."
+        }
+      }
+    },
+    "rangeResult": {
+      "type": "object",
+      "description": "Published driving range result for a specific cycle and scope.",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit"],
+      "properties": {
+        "cycle": {
+          "$ref": "#/$defs/testCycle"
+        },
+        "scope": {
+          "$ref": "#/$defs/resultScope"
+        },
+        "metric": {
+          "type": "string",
+          "description": "Range metric being reported.",
+          "enum": ["total_range", "electric_range"]
+        },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Normalized published range value."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the range value.",
+          "enum": ["km", "mi"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published range result for the vehicle."
+        }
+      }
+    },
+    "emissionsResult": {
+      "type": "object",
+      "description": "Published emissions result for a specific cycle and scope.",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit"],
+      "properties": {
+        "cycle": {
+          "$ref": "#/$defs/testCycle"
+        },
+        "scope": {
+          "$ref": "#/$defs/resultScope"
+        },
+        "metric": {
+          "type": "string",
+          "description": "Emissions metric being reported.",
+          "enum": ["co2_tailpipe", "co2_weighted", "co", "hc", "nmhc", "ch4", "n2o", "nox", "pm", "pn", "evaporative_hc"]
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Normalized published emissions value."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the emissions value.",
+          "enum": ["g_per_km", "mg_per_km", "number_per_km", "g_per_pba"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published emissions result for the vehicle."
+        }
+      }
+    },
+    "accelerationResult": {
+      "type": "object",
+      "description": "Published acceleration result for the vehicle.",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit"],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "description": "Acceleration metric being reported.",
+          "enum": ["0_100_kmh", "0_60_mph", "0_200_kmh", "quarter_mile"]
+        },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Published acceleration time for the stated metric."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the acceleration result.",
+          "enum": ["s"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published acceleration result for the vehicle."
+        }
+      }
+    },
+    "topSpeedResult": {
+      "type": "object",
+      "description": "Published top speed result for the vehicle.",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Published top speed value."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the top speed value.",
+          "enum": ["km_h", "mph"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published top speed result for the vehicle."
+        }
+      }
+    },
+    "torqueResult": {
+      "type": "object",
+      "description": "Published torque result for the vehicle.",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit"],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "description": "Torque metric being reported.",
+          "enum": ["system_torque", "peak_torque"]
+        },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Published torque value for the vehicle."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the torque value.",
+          "enum": ["nm", "lb_ft"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published torque result for the vehicle."
+        }
+      }
+    },
+    "powerResult": {
+      "type": "object",
+      "description": "Published power result for the vehicle.",
+      "additionalProperties": false,
+      "required": ["metric", "value", "unit"],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "description": "Power metric being reported.",
+          "enum": ["combustion_engine_power", "electric_motor_power", "system_power"]
+        },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Published power value for the vehicle."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit associated with the power value.",
+          "enum": ["kw", "hp", "ps"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published power result for the vehicle."
+        }
+      }
+    },
+    "chargingPort": {
+      "type": "object",
+      "description": "Published charging port configuration for the vehicle.",
+      "additionalProperties": false,
+      "required": ["currentType", "connector"],
+      "properties": {
+        "currentType": {
+          "type": "string",
+          "description": "Current type supported by this charging port.",
+          "enum": ["ac", "dc", "ac_dc"]
+        },
+        "connector": {
+          "type": "string",
+          "description": "Connector standard used by this charging port.",
+          "enum": ["type1", "type2", "ccs1", "ccs2", "chademo", "gb_t", "gb_dc", "nacs", "tesla", "other"]
+        },
+        "location": {
+          "type": "string",
+          "description": "Published physical location of the charging port on the vehicle.",
+          "enum": ["front_left", "front_right", "rear_left", "rear_right", "front_center", "rear_center", "left", "right", "other"]
+        }
+      }
+    },
+    "chargingCapability": {
+      "type": "object",
+      "description": "Published charging capability for a current type.",
+      "additionalProperties": false,
+      "required": ["maxPowerKw"],
+      "properties": {
+        "maxPowerKw": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Maximum published charging power in kilowatts."
+        },
+        "maxVoltageV": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Maximum published charging voltage in volts."
+        },
+        "maxCurrentA": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Maximum published charging current in amperes."
+        },
+        "phases": {
+          "type": "integer",
+          "description": "Number of AC phases supported when applicable.",
+          "minimum": 1,
+          "maximum": 3
+        }
+      }
+    },
+    "bidirectionalCharging": {
+      "type": "object",
+      "description": "Published bidirectional charging capabilities.",
+      "additionalProperties": false,
+      "properties": {
+        "v2l": {
+          "type": "boolean",
+          "description": "Vehicle-to-load capability."
+        },
+        "v2h": {
+          "type": "boolean",
+          "description": "Vehicle-to-home capability."
+        },
+        "v2g": {
+          "type": "boolean",
+          "description": "Vehicle-to-grid capability."
+        }
+      }
+    },
+    "chargeTimeResult": {
+      "type": "object",
+      "description": "Published charging time result for a specific charging scenario.",
+      "additionalProperties": false,
+      "required": ["currentType", "sourceStateOfChargePercent", "targetStateOfChargePercent", "durationMinutes"],
+      "properties": {
+        "currentType": {
+          "type": "string",
+          "description": "Current type used for this charging-time result.",
+          "enum": ["ac", "dc"]
+        },
+        "connector": {
+          "type": "string",
+          "description": "Connector standard associated with this charging-time result.",
+          "enum": ["type1", "type2", "ccs1", "ccs2", "chademo", "gb_t", "gb_dc", "nacs", "tesla", "other"]
+        },
+        "supplyContext": {
+          "type": "string",
+          "description": "Published supply context for this charging-time result.",
+          "enum": ["home_standard_outlet", "home_dedicated_ac", "public_ac", "public_dc_fast", "public_dc_ultrafast", "other"]
+        },
+        "sourceStateOfChargePercent": {
+          "type": "integer",
+          "description": "Starting battery state of charge percentage for the published charging-time result.",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "targetStateOfChargePercent": {
+          "type": "integer",
+          "description": "Ending battery state of charge percentage for the published charging-time result.",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "durationMinutes": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Published time required to move from the source state of charge to the target state of charge."
+        },
+        "powerKw": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Charging power associated with the published charging-time result when stated by the source."
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary published charging-time result for its current type."
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional published note or qualifier for the charging-time result."
+        }
+      }
+    },
+    "charging": {
+      "type": "object",
+      "description": "Published charging interfaces, capabilities, and charging-time results for the vehicle configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "ports": {
+          "type": "array",
+          "description": "Published charging ports available on the vehicle.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/chargingPort"
+          }
+        },
+        "acCharging": {
+          "$ref": "#/$defs/chargingCapability",
+          "description": "Published AC charging capability."
+        },
+        "dcCharging": {
+          "$ref": "#/$defs/chargingCapability",
+          "description": "Published DC charging capability."
+        },
+        "bidirectionalCharging": {
+          "$ref": "#/$defs/bidirectionalCharging"
+        },
+        "chargeTimes": {
+          "type": "array",
+          "description": "Published charging-time results for specific connectors, power levels, and state-of-charge windows.",
+          "items": {
+            "$ref": "#/$defs/chargeTimeResult"
+          }
+        }
+      }
+    },
+    "complianceRecord": {
+      "type": "object",
+      "description": "Compliance classification or certification record.",
+      "additionalProperties": false,
+      "required": ["standard"],
+      "properties": {
+        "region": {
+          "type": "string",
+          "description": "Market or regulatory region associated with the compliance record."
+        },
+        "standard": {
+          "type": "string",
+          "description": "Name or code of the standard, certification, or rule set."
+        },
+        "classification": {
+          "type": "string",
+          "description": "Classification, rating, or level under the named standard."
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary compliance record in its category."
+        }
+      }
+    },
+    "approvalSourceDocument": {
+      "type": "object",
+      "description": "Published source document issued or hosted by a relevant authority, registry, or official publication channel.",
+      "additionalProperties": false,
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Canonical URL for the published source document."
+        },
+        "title": {
+          "type": "string",
+          "description": "Published or inferred document title."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "Authority, registry, or publisher that hosts or issued the document."
+        },
+        "documentType": {
+          "type": "string",
+          "description": "Document category for the linked source.",
+          "enum": ["certificate", "approval_record", "database_entry", "regulation", "test_report", "other"]
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date",
+          "description": "Publication or issue date for the linked source when known."
+        },
+        "language": {
+          "type": "string",
+          "description": "Language tag or language name associated with the published source."
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary source document for the approval record."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional note about the linked source document."
+        }
+      }
+    },
+    "regulatoryApproval": {
+      "type": "object",
+      "description": "Regulatory approval, certification, or homologation record associated with the vehicle.",
+      "additionalProperties": false,
+      "required": ["authority", "jurisdiction", "scheme", "domain", "standard", "status"],
+      "properties": {
+        "authority": {
+          "type": "string",
+          "description": "Authority, agency, or official scheme owner responsible for the approval record."
+        },
+        "jurisdiction": {
+          "type": "string",
+          "description": "Market, country, or regulatory jurisdiction where the approval applies."
+        },
+        "scheme": {
+          "type": "string",
+          "description": "Approval or certification scheme name, such as type approval, certification, or NOM certification."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Domain covered by the approval record.",
+          "enum": ["emissions", "safety", "noise", "energy_efficiency", "other"]
+        },
+        "standard": {
+          "type": "string",
+          "description": "Standard, regulation family, or formal rule set under which the vehicle is approved or certified."
+        },
+        "classification": {
+          "type": "string",
+          "description": "Optional class, bin, stage, or category assigned under the named standard."
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Primary public identifier for the approval or certification record when published."
+        },
+        "status": {
+          "type": "string",
+          "description": "Lifecycle state of the approval record.",
+          "enum": ["approved", "certified", "accepted", "pending", "withdrawn", "expired", "rejected", "other"]
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date",
+          "description": "Date from which the approval or certification is valid when published."
+        },
+        "validTo": {
+          "type": "string",
+          "format": "date",
+          "description": "Date until which the approval or certification remains valid when published."
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary approval record for its domain on this vehicle."
+        },
+        "references": {
+          "type": "object",
+          "description": "Authority-specific auxiliary identifiers and published reference fields associated with the approval.",
+          "additionalProperties": { "type": ["string", "number", "boolean", "null"] }
+        },
+        "sourceDocs": {
+          "type": "array",
+          "description": "Published source documents that substantiate the approval or certification record.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/approvalSourceDocument"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional note or qualification associated with the approval record."
+        }
+      }
+    },
+    "particulateFilter": {
+      "type": "object",
+      "description": "Published particulate-filter fitment for the vehicle when applicable.",
+      "additionalProperties": false,
+      "required": ["present"],
+      "properties": {
+        "present": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle is equipped with a particulate filter."
+        },
+        "type": {
+          "type": "string",
+          "description": "Particulate-filter type when the vehicle is equipped with one.",
+          "enum": ["gpf", "dpf", "other"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "present": { "const": true }
+            },
+            "required": ["present"]
+          },
+          "then": {
+            "required": ["type"]
+          }
+        }
+      ]
+    },
+    "catalystSystem": {
+      "type": "object",
+      "description": "Published catalytic aftertreatment device or catalyst stage fitted to the vehicle.",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Catalyst or aftertreatment type fitted to the vehicle.",
+          "enum": ["three_way", "diesel_oxidation", "lean_nox_trap", "scr", "ammonia_slip", "other"]
+        },
+        "placement": {
+          "type": "string",
+          "description": "Published placement of this catalyst system within the exhaust path.",
+          "enum": ["close_coupled", "underfloor", "integrated_manifold", "engine_out", "other"]
+        },
+        "count": {
+          "type": "integer",
+          "description": "Number of devices of this catalyst type when published.",
+          "minimum": 1
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional note about this catalyst system."
+        }
+      }
+    },
+    "emissionsSensor": {
+      "type": "object",
+      "description": "Published emissions-related sensor placement and role information.",
+      "additionalProperties": false,
+      "required": ["sensorType", "placement"],
+      "properties": {
+        "sensorType": {
+          "type": "string",
+          "description": "Sensor type used for emissions monitoring or control.",
+          "enum": ["oxygen", "wideband_oxygen", "nox", "particulate_matter", "temperature", "pressure", "other"]
+        },
+        "placement": {
+          "type": "string",
+          "description": "Published placement of the sensor in the exhaust or aftertreatment path.",
+          "enum": ["upstream", "downstream", "pre_turbine", "post_turbine", "engine_out", "other"]
+        },
+        "relativeTo": {
+          "type": "string",
+          "description": "Component or stage that this sensor placement is relative to.",
+          "enum": ["catalyst", "particulate_filter", "scr", "engine", "other"]
+        },
+        "count": {
+          "type": "integer",
+          "description": "Number of sensors matching this description when published.",
+          "minimum": 1
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional note about this sensor position or role."
+        }
+      }
+    },
+    "emissionsControls": {
+      "type": "object",
+      "description": "Published emissions-control hardware and diagnostics fitted to the vehicle configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "catalyticConverter": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle is equipped with a catalytic converter."
+        },
+        "catalyticConverterCount": {
+          "type": "integer",
+          "description": "Number of catalytic converters when published.",
+          "minimum": 1
+        },
+        "catalystSystems": {
+          "type": "array",
+          "description": "Published catalytic aftertreatment systems, including type and placement when known.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/catalystSystem"
+          }
+        },
+        "oxygenSensor": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle is equipped with oxygen sensors."
+        },
+        "oxygenSensorCount": {
+          "type": "integer",
+          "description": "Number of oxygen sensors when published.",
+          "minimum": 1
+        },
+        "emissionsSensors": {
+          "type": "array",
+          "description": "Published emissions-related sensor placements and types when known.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/emissionsSensor"
+          }
+        },
+        "egr": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle uses an exhaust gas recirculation system."
+        },
+        "airPump": {
+          "type": "boolean",
+          "description": "Indicates whether the vehicle uses a secondary air injection pump."
+        },
+        "onboardDiagnostics": {
+          "type": "string",
+          "description": "Published onboard-diagnostics standard for emissions monitoring.",
+          "enum": ["obdii", "eobd", "other"]
+        },
+        "durabilityStandard": {
+          "type": "string",
+          "description": "Published durability standard associated with the emissions-control system."
+        },
+        "particulateFilter": {
+          "$ref": "#/$defs/particulateFilter"
+        }
+      }
+    },
+    "powertrainEnergySource": {
+      "type": "object",
+      "description": "Energy source used by the powertrain.",
+      "additionalProperties": false,
+      "required": ["source", "isPrimary"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Primary stored or supplied energy source.",
+          "enum": ["gasoline", "diesel", "flex_fuel", "ethanol", "cng", "lpg", "hydrogen", "grid_electricity", "other"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary energy source for the vehicle."
+        }
+      }
+    },
+    "powertrainEnergyStorage": {
+      "type": "object",
+      "description": "Energy storage component used by the powertrain.",
+      "additionalProperties": false,
+      "required": ["type", "isPrimary"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Stored energy component type.",
+          "enum": ["battery_pack", "fuel_tank", "other"]
+        },
+        "batteryPackId": {
+          "type": "string",
+          "description": "Battery pack identifier when the storage type is battery_pack, using a deterministic uppercase slug.",
+          "pattern": "^OVDS-BP-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "fuelCapacity": {
+          "$ref": "#/$defs/volumeMeasurement",
+          "description": "Fuel tank capacity when the storage type is fuel_tank."
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary energy storage component."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": { "const": "battery_pack" }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["batteryPackId"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": { "const": "fuel_tank" }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["fuelCapacity"]
+          }
+        }
+      ]
+    },
+    "powertrainEnergyConverter": {
+      "type": "object",
+      "description": "Component that converts stored or supplied energy into usable propulsion energy.",
+      "additionalProperties": false,
+      "required": ["type", "role", "isPrimary"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Energy conversion component type.",
+          "enum": ["combustion_engine", "fuel_cell_stack", "other"]
+        },
+        "engineId": {
+          "type": "string",
+          "description": "Internal combustion engine identifier when the converter type is combustion_engine, using a deterministic uppercase slug.",
+          "pattern": "^OVDS-EG-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "fuelCellStackId": {
+          "type": "string",
+          "description": "Fuel cell stack identifier when the converter type is fuel_cell_stack, using a deterministic uppercase slug.",
+          "pattern": "^OVDS-FC-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "role": {
+          "type": "string",
+          "description": "How this component participates in the powertrain.",
+          "enum": ["traction", "generator", "mixed"]
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary energy conversion component."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": { "const": "combustion_engine" }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["engineId"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": { "const": "fuel_cell_stack" }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["fuelCellStackId"]
+          }
+        }
+      ]
+    },
+    "powertrainTractionMotor": {
+      "type": "object",
+      "description": "Traction motor used to deliver torque to the driven wheels.",
+      "additionalProperties": false,
+      "required": ["electricMotorId", "isPrimary"],
+      "properties": {
+        "electricMotorId": {
+          "type": "string",
+          "description": "Electric motor identifier using a deterministic uppercase slug.",
+          "pattern": "^OVDS-EM-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "isPrimary": {
+          "type": "boolean",
+          "description": "Indicates whether this is the primary traction motor."
+        }
+      }
+    },
+    "powertrain": {
+      "type": "object",
+      "description": "Technical propulsion configuration for this vehicle, modeled by energy role rather than a single engine concept.",
+      "additionalProperties": false,
+      "required": ["architecture"],
+      "properties": {
+        "architecture": {
+          "type": "string",
+          "description": "Primary powertrain architecture for the vehicle.",
+          "enum": ["ice", "mild_hybrid", "series_hybrid", "parallel_hybrid", "power_split_hybrid", "plug_in_hybrid", "battery_electric", "fuel_cell_electric", "other"]
+        },
+        "energySources": {
+          "type": "array",
+          "description": "Stored or supplied energy sources available to the vehicle.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/powertrainEnergySource"
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "isPrimary": { "const": true }
+            },
+            "required": ["isPrimary"]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        "energyStorage": {
+          "type": "array",
+          "description": "Energy storage components used by the vehicle.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/powertrainEnergyStorage"
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "isPrimary": { "const": true }
+            },
+            "required": ["isPrimary"]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        "energyConverters": {
+          "type": "array",
+          "description": "Components that convert energy sources into usable propulsion energy.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/powertrainEnergyConverter"
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "isPrimary": { "const": true }
+            },
+            "required": ["isPrimary"]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        "tractionMotors": {
+          "type": "array",
+          "description": "Electric traction motors used to drive the wheels.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/powertrainTractionMotor"
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "isPrimary": { "const": true }
+            },
+            "required": ["isPrimary"]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        "driveType": {
+          "type": "string",
+          "description": "Driven axle layout for this powertrain configuration.",
+          "enum": ["fwd", "rwd", "awd", "4wd", "other"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "ice" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyConverters"],
+            "properties": {
+              "energyStorage": false,
+              "tractionMotors": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "mild_hybrid" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyStorage", "energyConverters"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "series_hybrid" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyStorage", "energyConverters", "tractionMotors"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "parallel_hybrid" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyStorage", "energyConverters", "tractionMotors"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "power_split_hybrid" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyStorage", "energyConverters", "tractionMotors"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "plug_in_hybrid" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyStorage", "energyConverters", "tractionMotors"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "battery_electric" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyStorage", "tractionMotors"],
+            "properties": {
+              "energyConverters": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "architecture": { "const": "fuel_cell_electric" }
+            },
+            "required": ["architecture"]
+          },
+          "then": {
+            "required": ["energySources", "energyConverters", "tractionMotors"]
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["id", "lineage", "configuration"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "OVDS vehicle identifier for a concrete published configuration record.",
+      "pattern": "^OVDS-V-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "lineage": {
+      "type": "object",
+      "description": "Commercial and historical lineage for this vehicle configuration.",
+      "additionalProperties": false,
+      "required": ["makeId", "modelId", "modelYear"],
+      "properties": {
+        "makeId": {
+          "type": "string",
+          "description": "Make identifier for the vehicle brand, using a deterministic uppercase slug.",
+          "pattern": "^OVDS-MK-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "modelId": {
+          "type": "string",
+          "description": "Stable model or nameplate identifier using a deterministic uppercase slug, typically derived from make and model.",
+          "pattern": "^OVDS-MD-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "platformId": {
+          "type": "string",
+          "description": "Optional platform identifier shared across one or more makes or groups, using a deterministic uppercase slug.",
+          "pattern": "^OVDS-PF-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "generationId": {
+          "type": "string",
+          "description": "Optional generation identifier shared across multiple model years, using a deterministic uppercase slug derived from the model hierarchy.",
+          "pattern": "^OVDS-GN-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "modelYear": {
+          "type": "integer",
+          "description": "Commercial model year for this vehicle configuration.",
+          "minimum": 1886,
+          "maximum": 9999
+        },
+        "variantId": {
+          "type": "string",
+          "description": "Optional commercial variant or trim identifier for this model year, using a deterministic uppercase slug. A variant may still correspond to multiple technical configurations.",
+          "pattern": "^OVDS-VR-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+        "submodelId": {
+          "type": "string",
+          "description": "Optional legacy or transitional submodel identifier using a deterministic uppercase slug.",
+          "pattern": "^OVDS-SM-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        }
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "description": "Concrete technical configuration for the vehicle offered in this lineage entry.",
+      "additionalProperties": false,
+      "required": ["powertrain"],
+      "properties": {
+        "powertrain": {
+          "$ref": "#/$defs/powertrain"
+        },
+        "charging": {
+          "$ref": "#/$defs/charging"
+        },
+        "emissionsControls": {
+          "$ref": "#/$defs/emissionsControls"
+        },
+        "transmissionId": {
+          "type": "string",
+          "description": "Transmission identifier when applicable, using a deterministic uppercase slug.",
+          "pattern": "^OVDS-TR-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+        },
+
+        "bodyStyle": {
+          "type": "string",
+          "description": "Published body style for the configuration.",
+          "enum": ["sedan", "hatchback", "fastback", "coupe", "convertible", "wagon", "suv", "crossover", "pickup", "van", "minivan", "liftback", "roadster", "targa", "other"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "powertrain": {
+                "properties": {
+                  "architecture": { "enum": ["ice", "mild_hybrid", "parallel_hybrid", "power_split_hybrid", "plug_in_hybrid"] }
+                },
+                "required": ["architecture"]
+              }
+            },
+            "required": ["powertrain"]
+          },
+          "then": {
+            "required": ["transmissionId"]
+          }
+        }
+      ]
+    },
+    "origin": {
+      "type": "object",
+      "description": "Published assembly origin for this concrete vehicle configuration.",
+      "additionalProperties": false,
+      "required": ["assemblyCountry"],
+      "properties": {
+        "assemblyCountry": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code for the country where the vehicle is assembled.",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "assemblyRegion": {
+          "type": "string",
+          "description": "Optional published state, province, or region where the vehicle is assembled."
+        },
+        "assemblyPlant": {
+          "type": "string",
+          "description": "Optional published assembly plant or factory name for the vehicle."
+        }
+      }
+    },
+    "specs": {
+      "type": "object",
+      "description": "Core vehicle specifications expressed in canonical SI units, with optional source measurements preserved for traceability.",
+      "additionalProperties": false,
+      "properties": {
+        "length": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Overall vehicle length measured from bumper to bumper."
+        },
+        "width": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Overall vehicle width measured across the outermost body points."
+        },
+        "height": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Overall vehicle height measured from the top of the body to the ground."
+        },
+        "wheelbase": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Distance between the centers of the front and rear wheels."
+        },
+        "frontTrackWidth": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Distance between the centers of the left and right front wheels."
+        },
+        "rearTrackWidth": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Distance between the centers of the left and right rear wheels."
+        },
+        "footprint": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Published vehicle footprint measurement as reported by the source or applicable standard."
+        },
+        "turningCircle": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Minimum turning circle required for a U-turn."
+        },
+        "groundClearance": {
+          "$ref": "#/$defs/lengthMeasurement",
+          "description": "Published minimum ground clearance for the vehicle."
+        },
+        "curbWeight": {
+          "$ref": "#/$defs/massMeasurement",
+          "description": "Vehicle curb weight without occupants or cargo."
+        },
+        "maxLoad": {
+          "$ref": "#/$defs/massMeasurement",
+          "description": "Maximum combined occupant and cargo load."
+        },
+        "doorCount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Published number of side-access doors for the vehicle body."
+        },
+        "passengerCapacity": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum designed seating capacity for passengers."
+        },
+        "payloadCapacity": {
+          "$ref": "#/$defs/massMeasurement",
+          "description": "Maximum payload capacity for occupants and cargo."
+        },
+        "towingCapacity": {
+          "$ref": "#/$defs/massMeasurement",
+          "description": "Maximum rated towing capacity."
+        },
+        "cargoCapacity": {
+          "$ref": "#/$defs/volumeMeasurement",
+          "description": "Published cargo or luggage compartment capacity."
+        },
+        "brakes": {
+          "$ref": "#/$defs/brakeSetup",
+          "description": "Published front and rear brake types."
+        }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "description": "Published performance and certification results for the vehicle.",
+      "additionalProperties": false,
+      "properties": {
+        "efficiency": {
+          "type": "array",
+          "description": "Efficiency results by cycle and scope.",
+          "items": {
+            "$ref": "#/$defs/efficiencyResult"
+          }
+        },
+        "range": {
+          "type": "array",
+          "description": "Range results by cycle and scope.",
+          "items": {
+            "$ref": "#/$defs/rangeResult"
+          }
+        },
+        "emissions": {
+          "type": "array",
+          "description": "Emissions results by cycle and scope.",
+          "items": {
+            "$ref": "#/$defs/emissionsResult"
+          }
+        },
+        "acceleration": {
+          "type": "array",
+          "description": "Published acceleration results.",
+          "items": {
+            "$ref": "#/$defs/accelerationResult"
+          }
+        },
+        "topSpeed": {
+          "type": "array",
+          "description": "Published top speed results.",
+          "items": {
+            "$ref": "#/$defs/topSpeedResult"
+          }
+        },
+        "torque": {
+          "type": "array",
+          "description": "Published torque results for the vehicle.",
+          "items": {
+            "$ref": "#/$defs/torqueResult"
+          }
+        },
+        "power": {
+          "type": "array",
+          "description": "Published power results for the vehicle.",
+          "items": {
+            "$ref": "#/$defs/powerResult"
+          }
+        }
+      }
+    },
+    "costOfOwnership": {
+      "type": "object",
+      "description": "Published cost-of-ownership estimates kept separate from measured or certified performance results.",
+      "additionalProperties": false,
+      "properties": {
+        "tenYear": {
+          "$ref": "#/$defs/costOfOwnershipEstimate"
+        }
+      }
+    },
+    "safety": {
+      "$ref": "https://ovds.xyz/spec/v0.2.0/safety.schema.json",
+      "description": "Normalized safety features for this vehicle configuration."
+    },
+    "compliance": {
+      "type": "object",
+      "description": "Regulatory or certification classifications associated with the vehicle.",
+      "additionalProperties": false,
+      "properties": {
+        "approvals": {
+          "type": "array",
+          "description": "Structured regulatory approval, certification, or homologation records associated with the vehicle.",
+          "items": {
+            "$ref": "#/$defs/regulatoryApproval"
+          }
+        },
+        "emissions": {
+          "type": "array",
+          "description": "Emissions or environmental compliance records.",
+          "items": {
+            "$ref": "#/$defs/complianceRecord"
+          }
+        },
+        "safety": {
+          "type": "array",
+          "description": "Safety compliance or certification records.",
+          "items": {
+            "$ref": "#/$defs/complianceRecord"
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Additional free-form attributes used only as an escape hatch for normalized public-source data that does not yet have a dedicated OVDS field.",
+      "additionalProperties": { "type": ["string", "number", "boolean", "null"] }
+    }
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "id": "OVDS-V-AETHRA-SOLIS-2026-SPARK-1-5-MHEV-6MT",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-SOLIS",
+    "platformId": "OVDS-PF-NOVA-C",
+    "generationId": "OVDS-GN-AETHRA-SOLIS-1",
+    "modelYear": 2026,
+    "variantId": "OVDS-VR-AETHRA-SOLIS-2026-SPARK-1-5-MHEV"
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "mild_hybrid",
+      "energySources": [
+        {
+          "source": "gasoline",
+          "isPrimary": true
+        }
+      ],
+      "energyStorage": [
+        {
+          "type": "fuel_tank",
+          "fuelCapacity": {
+            "value": 48,
+            "unit": "l"
+          },
+          "isPrimary": true
+        },
+        {
+          "type": "battery_pack",
+          "batteryPackId": "OVDS-BP-NOVA-048-MHEV",
+          "isPrimary": false
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-NOVA-15T",
+          "role": "mixed",
+          "isPrimary": true
+        }
+      ],
+      "tractionMotors": [
+        {
+          "electricMotorId": "OVDS-EM-NOVA-BSG-12",
+          "isPrimary": true
+        }
+      ],
+      "driveType": "fwd"
+    },
+    "emissionsControls": {
+      "catalyticConverter": true,
+      "catalyticConverterCount": 1,
+      "catalystSystems": [
+        {
+          "type": "three_way",
+          "placement": "integrated_manifold",
+          "count": 1
+        }
+      ],
+      "oxygenSensor": true,
+      "oxygenSensorCount": 2,
+      "emissionsSensors": [
+        {
+          "sensorType": "wideband_oxygen",
+          "placement": "upstream",
+          "relativeTo": "catalyst",
+          "count": 1
+        },
+        {
+          "sensorType": "oxygen",
+          "placement": "downstream",
+          "relativeTo": "catalyst",
+          "count": 1
+        }
+      ],
+      "egr": true,
+      "airPump": false,
+      "onboardDiagnostics": "eobd",
+      "durabilityStandard": "Euro 6e durability demonstration",
+      "particulateFilter": {
+        "present": true,
+        "type": "gpf"
+      }
+    },
+    "transmissionId": "OVDS-TR-6MT-240",
+    "bodyStyle": "hatchback"
+  },
+  "origin": {
+    "assemblyCountry": "ES",
+    "assemblyRegion": "Navarra",
+    "assemblyPlant": "Nova Mobility Plant"
+  },
+  "specs": {
+    "length": {
+      "value": 4320,
+      "unit": "mm"
+    },
+    "width": {
+      "value": 1795,
+      "unit": "mm"
+    },
+    "height": {
+      "value": 1460,
+      "unit": "mm"
+    },
+    "wheelbase": {
+      "value": 2640,
+      "unit": "mm"
+    },
+    "frontTrackWidth": {
+      "value": 1548,
+      "unit": "mm"
+    },
+    "rearTrackWidth": {
+      "value": 1536,
+      "unit": "mm"
+    },
+    "groundClearance": {
+      "value": 142,
+      "unit": "mm"
+    },
+    "curbWeight": {
+      "value": 1325,
+      "unit": "kg"
+    },
+    "maxLoad": {
+      "value": 505,
+      "unit": "kg"
+    },
+    "doorCount": 5,
+    "passengerCapacity": 5,
+    "payloadCapacity": {
+      "value": 505,
+      "unit": "kg"
+    },
+    "cargoCapacity": {
+      "value": 380,
+      "unit": "l"
+    },
+    "brakes": {
+      "front": "ventilated_disc",
+      "rear": "disc"
+    }
+  },
+  "performance": {
+    "efficiency": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "fuel_consumption",
+        "value": 5.4,
+        "unit": "l_per_100km",
+        "isPrimary": true
+      }
+    ],
+    "range": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "total_range",
+        "value": 890,
+        "unit": "km",
+        "isPrimary": true
+      }
+    ],
+    "emissions": [
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co2_tailpipe",
+        "value": 122,
+        "unit": "g_per_km",
+        "isPrimary": true
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "co",
+        "value": 410,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "nmhc",
+        "value": 42,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "wltp",
+        "scope": "combined",
+        "metric": "nox",
+        "value": 18,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "ftp",
+        "scope": "city",
+        "metric": "co2_tailpipe",
+        "value": 136,
+        "unit": "g_per_km"
+      },
+      {
+        "cycle": "ftp",
+        "scope": "city",
+        "metric": "co",
+        "value": 520,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "ftp",
+        "scope": "city",
+        "metric": "hc",
+        "value": 54,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "ftp",
+        "scope": "city",
+        "metric": "n2o",
+        "value": 4.2,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "ftp",
+        "scope": "city",
+        "metric": "ch4",
+        "value": 3.8,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "hfet",
+        "scope": "highway",
+        "metric": "co2_tailpipe",
+        "value": 101,
+        "unit": "g_per_km"
+      },
+      {
+        "cycle": "hfet",
+        "scope": "highway",
+        "metric": "co",
+        "value": 190,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "hfet",
+        "scope": "highway",
+        "metric": "hc",
+        "value": 21,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "hfet",
+        "scope": "highway",
+        "metric": "n2o",
+        "value": 2.1,
+        "unit": "mg_per_km"
+      },
+      {
+        "cycle": "hfet",
+        "scope": "highway",
+        "metric": "ch4",
+        "value": 1.7,
+        "unit": "mg_per_km"
+      },
+      {
+        "metric": "evaporative_hc",
+        "value": 0.32,
+        "unit": "g_per_pba"
+      }
+    ],
+    "acceleration": [
+      {
+        "metric": "0_100_kmh",
+        "value": 8.9,
+        "unit": "s",
+        "isPrimary": true
+      }
+    ],
+    "topSpeed": [
+      {
+        "value": 208,
+        "unit": "km_h",
+        "isPrimary": true
+      }
+    ],
+    "torque": [
+      {
+        "metric": "system_torque",
+        "value": 270,
+        "unit": "nm",
+        "isPrimary": true
+      }
+    ],
+    "power": [
+      {
+        "metric": "combustion_engine_power",
+        "value": 96,
+        "unit": "kw"
+      },
+      {
+        "metric": "electric_motor_power",
+        "value": 12,
+        "unit": "kw"
+      },
+      {
+        "metric": "system_power",
+        "value": 100,
+        "unit": "kw",
+        "isPrimary": true
+      }
+    ]
+  },
+  "compliance": {
+    "emissions": [
+      {
+        "region": "EU",
+        "standard": "Euro 6e",
+        "classification": "light_duty_passenger_car",
+        "isPrimary": true
+      }
+    ]
+  },
+  "attributes": {
+    "displayName": "Aethra Solis Spark 1.5 MHEV 6MT",
+    "exampleType": "fictional",
+    "sourceNote": "Illustrative mild-hybrid reference example for OVDS v0.2.0"
+  }
+}

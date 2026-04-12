@@ -33,7 +33,7 @@ existing version in place.
 
 ## Versioning Workflow
 
-OVDS versions are maintained by directory within the repository, such as `spec/v0.1.2/`.
+OVDS versions are maintained by directory within the repository, such as `spec/v0.2.0/`.
 
 Contributors should follow these rules:
 
@@ -46,7 +46,7 @@ Contributors should follow these rules:
 ## Style Rules
 
 - Follow the field naming convention used by the published schema version.
-- Use JSON Schema draft 2020-12 for the current v0.1.2 schemas.
+- Use JSON Schema draft 2020-12 for the current v0.2.0 schemas.
 - Add a clear `description` for each schema property.
 - Keep the core schema minimal and portable.
 - Prefer extensibility through `extensions` for domain-specific data.
@@ -82,6 +82,6 @@ When adding examples or sample payloads, validate them explicitly against the ta
 
 ```bash
 uv run python scripts/validate_schemas.py \
-  --schema-id https://ovds.xyz/spec/v0.1.2/vehicle.schema.json \
+  --schema-id https://ovds.xyz/spec/v0.2.0/vehicle.schema.json \
   --instance path/to/example.json
 ```

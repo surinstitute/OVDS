@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.2.0/battery-pack.schema.json",
+  "title": "Open Vehicle Data Standard - Battery Pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "OVDS battery pack identifier using a deterministic, human-readable uppercase slug.",
+      "pattern": "^OVDS-BP-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "chemistry": {
+      "type": "string",
+      "description": "Battery cell chemistry.",
+      "enum": ["lfp", "nmc", "nca", "nimh", "lead_acid", "solid_state", "other"]
+    },
+    "grossCapacityKWh": {
+      "type": "number",
+      "description": "Gross battery capacity in kilowatt-hours.",
+      "exclusiveMinimum": 0
+    },
+    "usableCapacityKWh": {
+      "type": "number",
+      "description": "Usable battery capacity in kilowatt-hours.",
+      "exclusiveMinimum": 0
+    },
+    "systemVoltage": {
+      "type": "integer",
+      "description": "Nominal pack voltage.",
+      "minimum": 1
+    }
+  }
+}

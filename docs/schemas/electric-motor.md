@@ -1,6 +1,6 @@
 # Electric Motor Schema
 
-Schema file: [spec/v0.1.2/electric-motor.schema.json](../../spec/v0.1.2/electric-motor.schema.json)
+Schema file: [spec/v0.2.0/electric-motor.schema.json](../../spec/v0.2.0/electric-motor.schema.json)
 
 ## Purpose
 

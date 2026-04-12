@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.2.0/make.schema.json",
+  "title": "Open Vehicle Data Standard - Make",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "OVDS make identifier using a deterministic, human-readable uppercase slug.",
+      "pattern": "^OVDS-MK-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "groupIds": {
+      "type": "array",
+      "description": "One or more automotive groups associated with this make.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^OVDS-GR-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the make or marque."
+    }
+  }
+}

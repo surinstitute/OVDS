@@ -9,11 +9,11 @@ This repository contains the specification only. It does not contain backend cod
 ## Documentation
 
 - Overview: [docs/index.md](docs/index.md)
-- Normative spec: [spec/v0.1.2/readme.md](spec/v0.1.2/readme.md)
+- Normative spec: [spec/v0.2.0/readme.md](spec/v0.2.0/readme.md)
 
 ## Data Model
 
-OVDS v0.1.2 is organized around a concrete vehicle record with separate reusable technical entities.
+OVDS v0.2.0 is organized around a concrete vehicle record with separate reusable technical entities.
 
 - Group: reusable automotive group definition above makes
 - Make: reusable brand or marque definition
@@ -37,17 +37,17 @@ This keeps commercial lineage separate from technical composition while reducing
 
 ## Core Vehicle Model
 
-The current v0.1.2 schemas are defined in:
+The current v0.2.0 schemas are defined in:
 
-- `spec/v0.1.2/vehicle.schema.json`
-- `spec/v0.1.2/group.schema.json`
-- `spec/v0.1.2/make.schema.json`
-- `spec/v0.1.2/platform.schema.json`
-- `spec/v0.1.2/safety.schema.json`
-- `spec/v0.1.2/engine.schema.json`
-- `spec/v0.1.2/electric-motor.schema.json`
-- `spec/v0.1.2/battery-pack.schema.json`
-- `spec/v0.1.2/transmission.schema.json`
+- `spec/v0.2.0/vehicle.schema.json`
+- `spec/v0.2.0/group.schema.json`
+- `spec/v0.2.0/make.schema.json`
+- `spec/v0.2.0/platform.schema.json`
+- `spec/v0.2.0/safety.schema.json`
+- `spec/v0.2.0/engine.schema.json`
+- `spec/v0.2.0/electric-motor.schema.json`
+- `spec/v0.2.0/battery-pack.schema.json`
+- `spec/v0.2.0/transmission.schema.json`
 
 The vehicle schema is structured around these top-level blocks:
 
@@ -87,13 +87,15 @@ Fuel capacity is modeled inside energy storage, while longer-horizon ownership e
 
 Published efficiency, range, emissions, acceleration, top speed, torque, and system power results are modeled separately from compliance data so test-cycle values and regulatory classifications can coexist without being conflated.
 
+In v0.2.0, `compliance.approvals` adds a portable way to represent official approvals and certifications across markets. Each approval can capture the authority, jurisdiction, scheme, domain, identifier, status, and one or more official `sourceDocs` without duplicating vehicle lineage fields such as `modelYear`.
+
 Reusable engine and electric-motor schemas can also store component-level power values without duplicating vehicle-level combined output.
 
 Safety features are modeled separately from both compliance and commercial packaging so they can be compared across brands using a common taxonomy.
 
 ## Versioning
 
-OVDS versions are published by directory within the repository, for example `spec/v0.1.2/`.
+OVDS versions are published by directory within the repository, for example `spec/v0.2.0/`.
 
 This repository does not use long-lived branches as the primary versioning mechanism for the standard.
 
@@ -101,7 +103,7 @@ The intended release strategy is:
 
 - versioned specification directories in `spec/`
 - matching explanatory documentation under `docs/versions/`
-- Git tags for official published releases such as `v0.1.0`, `v0.1.1`, and `v0.1.2`
+- Git tags for official published releases such as `v0.1.0`, `v0.1.1`, `v0.1.2`, and `v0.2.0`
 
 This keeps multiple specification versions visible in one repository while making published releases easy to reference and later expose in generated documentation sites.
 
@@ -135,14 +137,14 @@ You can also validate a concrete JSON document against a specific schema $id:
 
 ```bash
 uv run python scripts/validate_schemas.py \
-  --schema-id https://ovds.xyz/spec/v0.1.2/vehicle.schema.json \
-  --instance examples/v0.1.2/ev.json
+  --schema-id https://ovds.xyz/spec/v0.2.0/vehicle.schema.json \
+  --instance examples/v0.2.0/ev.json
 ```
 
 The validation script loads local schemas from `spec/` into an in-memory registry so
 canonical `$id` references resolve without network access.
 
-Reference examples under `examples/v0.1.2/` currently cover battery-electric, diesel ICE, natural-gas ICE, mild-hybrid, full-hybrid, plug-in hybrid, and series-hybrid configurations.
+Reference examples under `examples/v0.2.0/` currently cover battery-electric, diesel ICE, natural-gas ICE, mild-hybrid, full-hybrid, plug-in hybrid, and series-hybrid configurations, including market-specific approval examples for EPA, EU type approval, and Mexico NOM.
 
 ## Compliance
 

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovds.xyz/spec/v0.2.0/transmission.schema.json",
+  "title": "Open Vehicle Data Standard - Transmission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "OVDS transmission identifier using a deterministic, human-readable uppercase slug.",
+      "pattern": "^OVDS-TR-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+    },
+    "type": {
+      "type": "string",
+      "description": "Primary transmission type.",
+      "enum": ["manual", "automatic", "dct", "cvt", "single_speed", "other"]
+    },
+    "gears": {
+      "type": "integer",
+      "description": "Number of forward gears when applicable.",
+      "minimum": 1
+    }
+  }
+}

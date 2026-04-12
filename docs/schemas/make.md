@@ -1,6 +1,6 @@
 # Make Schema
 
-Schema file: [spec/v0.1.2/make.schema.json](../../spec/v0.1.2/make.schema.json)
+Schema file: [spec/v0.2.0/make.schema.json](../../spec/v0.2.0/make.schema.json)
 
 ## Purpose
 

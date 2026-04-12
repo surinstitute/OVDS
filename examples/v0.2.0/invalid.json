@@ -1,0 +1,47 @@
+{
+  "id": "OVDS-V-AETHRA-LYNX-2026-ECLIPSE-LONG-RANGE-RWD-84KWH",
+  "lineage": {
+    "makeId": "OVDS-MK-AETHRA",
+    "modelId": "OVDS-MD-AETHRA-LYNX",
+    "modelYear": 1700
+  },
+  "configuration": {
+    "powertrain": {
+      "architecture": "battery_electric",
+      "energySources": [
+        {
+          "source": "grid_electricity",
+          "isPrimary": true
+        }
+      ],
+      "energyStorage": [
+        {
+          "type": "battery_pack",
+          "batteryPackId": "OVDS-BP-AURORA-84",
+          "isPrimary": true
+        }
+      ],
+      "energyConverters": [
+        {
+          "type": "combustion_engine",
+          "engineId": "OVDS-EG-TEST-1",
+          "role": "traction",
+          "isPrimary": true
+        }
+      ]
+    },
+    "bodyStyle": "spaceship"
+  },
+  "specs": {
+    "length": {
+      "value": 478,
+      "unit": "cm"
+    }
+  },
+  "safety": {
+    "collisionWarnings": {
+      "fcw": "yes"
+    }
+  },
+  "unexpectedProperty": true
+}
