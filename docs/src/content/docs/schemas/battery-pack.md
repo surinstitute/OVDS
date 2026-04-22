@@ -4,7 +4,7 @@ title: Battery Pack Schema
 
 # Battery Pack Schema
 
-Schema file: [spec/v0.2.0/battery-pack.schema.json](../../spec/v0.2.0/battery-pack.schema.json)
+Schema file: [spec/v0.2.0/battery-pack.schema.json](../../v0.2.0/battery-pack.schema.json)
 
 ## Purpose
 

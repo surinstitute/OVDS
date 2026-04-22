@@ -4,7 +4,7 @@ title: Vehicle Schema
 
 # Vehicle Schema
 
-Schema file: [spec/v0.2.0/vehicle.schema.json](../../spec/v0.2.0/vehicle.schema.json)
+Schema file: [spec/v0.2.0/vehicle.schema.json](../../v0.2.0/vehicle.schema.json)
 
 ## Purpose
 
@@ -50,4 +50,4 @@ The vehicle schema represents a concrete published vehicle configuration.
 - Approval entries should not duplicate lineage fields already defined on the vehicle, such as `lineage.modelYear`.
 - `compliance.approvals[].sourceDocs` can attach one or more official supporting publications, certificates, or registry documents.
 
-See also [spec/v0.2.0/readme.md](../../spec/v0.2.0/readme.md).
+See also [spec/v0.2.0/readme.md](../../v0.2.0/readme.md).

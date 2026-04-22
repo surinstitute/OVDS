@@ -4,7 +4,7 @@ title: Platform Schema
 
 # Platform Schema
 
-Schema file: [spec/v0.2.0/platform.schema.json](../../spec/v0.2.0/platform.schema.json)
+Schema file: [spec/v0.2.0/platform.schema.json](../../v0.2.0/platform.schema.json)
 
 ## Purpose
 

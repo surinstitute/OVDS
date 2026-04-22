@@ -4,7 +4,7 @@ title: Engine Schema
 
 # Engine Schema
 
-Schema file: [spec/v0.2.0/engine.schema.json](../../spec/v0.2.0/engine.schema.json)
+Schema file: [spec/v0.2.0/engine.schema.json](../../v0.2.0/engine.schema.json)
 
 ## Purpose
 

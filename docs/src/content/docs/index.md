@@ -3,15 +3,15 @@ title: Documentation
 description: OVDS is an open, portable standard for representing vehicle data using JSON Schema.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Open Vehicle Data Standard Documentation
   image:
     file: ../../assets/houston.webp
   actions:
     - text: Example Guide
-      link: /guides/example/
+      link: /model
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: Read the docs
+      link: https://surinstitute.github.io/OVDS
       icon: external
       variant: minimal
 ---
@@ -22,20 +22,20 @@ This documentation tree is intentionally tool-agnostic so it can later be publis
 
 ## Sections
 
-- [Data model overview](model/overview.md)
-- [Powertrain model](model/powertrain.md)
-- [Vehicle schema](schemas/vehicle.md)
-- [Group schema](schemas/group.md)
-- [Make schema](schemas/make.md)
-- [Platform schema](schemas/platform.md)
-- [Engine schema](schemas/engine.md)
-- [Electric motor schema](schemas/electric-motor.md)
-- [Battery pack schema](schemas/battery-pack.md)
-- [Transmission schema](schemas/transmission.md)
-- [Safety schema](schemas/safety.md)
-- [Version v0.2.x](versions/v0.2.x.md)
-- [Version v0.1.x](versions/v0.1.x.md)
+- [Data model overview](model/overview)
+- [Powertrain model](model/powertrain)
+- [Vehicle schema](schemas/vehicle)
+- [Group schema](schemas/group)
+- [Make schema](schemas/make)
+- [Platform schema](schemas/platform)
+- [Engine schema](schemas/engine)
+- [Electric motor schema](schemas/electric-motor)
+- [Battery pack schema](schemas/battery-pack)
+- [Transmission schema](schemas/transmission)
+- [Safety schema](schemas/safety)
+- [Version v0.2.x](versions/v0.2.x)
+- [Version v0.1.x](versions/v0.1.x)
 
 ## Normative Source
 
-The normative versioned specification for v0.2.0 is defined in [spec/v0.2.0/readme.md](../spec/v0.2.0/readme.md).
+The normative versioned specification for v0.2.0 is defined in [spec/v0.2.0/readme](../spec/v0.2.0/readme).
