@@ -1,3 +1,7 @@
+---
+title: Safety Schema
+---
+
 # Safety Schema
 
 Schema file: [spec/v0.2.0/safety.schema.json](../../spec/v0.2.0/safety.schema.json)

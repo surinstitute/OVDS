@@ -1,3 +1,7 @@
+---
+title: Powertrain Model
+---
+
 # Powertrain Model
 
 OVDS treats powertrain as a composition layer built around energy roles rather than a single engine field.

@@ -1,3 +1,7 @@
+---
+title: Electric Motor Schema
+---
+
 # Electric Motor Schema
 
 Schema file: [spec/v0.2.0/electric-motor.schema.json](../../spec/v0.2.0/electric-motor.schema.json)

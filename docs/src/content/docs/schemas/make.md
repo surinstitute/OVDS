@@ -1,3 +1,7 @@
+---
+title: Make Schema
+---
+
 # Make Schema
 
 Schema file: [spec/v0.2.0/make.schema.json](../../spec/v0.2.0/make.schema.json)

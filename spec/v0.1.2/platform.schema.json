@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ovds.xyz/spec/v0.1.2/platform.schema.json",
+  "$id": "https://surinstitute.github.io/OVDS/v0.1.2/platform.schema.json",
   "title": "Open Vehicle Data Standard - Platform",
   "type": "object",
   "additionalProperties": false,

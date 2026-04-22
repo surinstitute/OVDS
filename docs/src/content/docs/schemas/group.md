@@ -1,3 +1,7 @@
+---
+title: Group Schema
+---
+
 # Group Schema
 
 Schema file: [spec/v0.2.0/group.schema.json](../../spec/v0.2.0/group.schema.json)

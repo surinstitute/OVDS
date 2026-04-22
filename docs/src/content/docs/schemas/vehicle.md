@@ -1,3 +1,7 @@
+---
+title: Vehicle Schema
+---
+
 # Vehicle Schema
 
 Schema file: [spec/v0.2.0/vehicle.schema.json](../../spec/v0.2.0/vehicle.schema.json)

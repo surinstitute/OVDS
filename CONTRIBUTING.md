@@ -82,6 +82,6 @@ When adding examples or sample payloads, validate them explicitly against the ta
 
 ```bash
 uv run python scripts/validate_schemas.py \
-  --schema-id https://ovds.xyz/spec/v0.2.0/vehicle.schema.json \
+  --schema-id https://surinstitute.github.io/v0.2.0/vehicle.schema.json \
   --instance path/to/example.json
 ```

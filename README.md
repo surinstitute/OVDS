@@ -137,7 +137,7 @@ You can also validate a concrete JSON document against a specific schema $id:
 
 ```bash
 uv run python scripts/validate_schemas.py \
-  --schema-id https://ovds.xyz/spec/v0.2.0/vehicle.schema.json \
+  --schema-id https://surinstitute.github.io/v0.2.0/vehicle.schema.json \
   --instance examples/v0.2.0/ev.json
 ```
 

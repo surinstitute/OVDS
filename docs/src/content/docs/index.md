@@ -1,4 +1,20 @@
-# OVDS Documentation
+---
+title: Documentation
+description: OVDS is an open, portable standard for representing vehicle data using JSON Schema.
+template: splash # Remove or comment out this line to display the site sidebar on this page.
+hero:
+  tagline: Congrats on setting up a new Starlight project!
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Example Guide
+      link: /guides/example/
+      icon: right-arrow
+    - text: Read the Starlight docs
+      link: https://starlight.astro.build
+      icon: external
+      variant: minimal
+---
 
 OVDS is an open, portable standard for representing vehicle data using JSON Schema.
 
